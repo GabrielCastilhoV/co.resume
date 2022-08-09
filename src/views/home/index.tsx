@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Fieldset, TextField } from 'components/elements'
+import { Fieldset, RichText, TextField } from 'components/elements'
 
 import * as S from './styles'
 
@@ -59,7 +59,11 @@ export const HomeView = () => {
           />
         </Fieldset>
 
-        <Fieldset legend="Professional Summary">.</Fieldset>
+        <Fieldset legend="Professional Summary">
+          <RichText
+            onRichTextChange={(value) => handleInput('summary', value)}
+          />
+        </Fieldset>
 
         <Fieldset legend="Work History">.</Fieldset>
         <Fieldset legend="Education">.</Fieldset>
