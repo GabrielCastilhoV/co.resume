@@ -27,12 +27,15 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  fieldset {all:unset};
+  legend {all:unset};
+
   body,
   input,
   textarea,
   select,
   button {
-    font: 400 1.6rem ${({ theme }) => theme.font.family}, sans-serif;
+    font: 400 1rem ${({ theme }) => theme.font.family}, sans-serif;
   }
 `
 

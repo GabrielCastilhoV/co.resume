@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { HomeView } from 'views'
+
 const Home = () => {
-  return <h1>Hello world</h1>
+  return <HomeView />
 }
 
 export default Home
