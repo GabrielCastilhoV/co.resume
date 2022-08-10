@@ -4,9 +4,10 @@ import {
   Fieldset,
   RichText,
   TextField,
-  TimeLineEducation,
-  TimeLineWork
+  CollapseInput
 } from 'components/elements'
+
+import { EDUCATION_INPUTS, WORK_INPUTS } from 'utils/constants'
 
 import * as S from './styles'
 
@@ -21,6 +22,7 @@ export type Education = {
   institution?: string
   program?: string
   duration?: string
+  description?: string
 }
 
 type FieldValues = {
@@ -52,7 +54,8 @@ export const HomeView = () => {
       {
         institution: '',
         program: '',
-        duration: ''
+        duration: '',
+        description: ''
       }
     ]
   })
@@ -106,15 +109,19 @@ export const HomeView = () => {
         </Fieldset>
 
         <Fieldset legend="Work History">
-          <TimeLineWork
+          <CollapseInput
+            name="role"
             data={values?.experience}
+            inputs={WORK_INPUTS}
             onChange={(value) => handleInput('experience', value)}
           />
         </Fieldset>
 
         <Fieldset legend="Education">
-          <TimeLineEducation
+          <CollapseInput
+            name="education"
             data={values?.education}
+            inputs={EDUCATION_INPUTS}
             onChange={(value) => handleInput('education', value)}
           />
         </Fieldset>
