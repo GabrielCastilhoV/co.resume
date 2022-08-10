@@ -30,6 +30,10 @@ const GlobalStyles = createGlobalStyle`
   fieldset {all:unset};
   legend {all:unset};
 
+  h1, h2, h3, h4, h5, h6, p {
+    margin: unset;
+  }
+
   body,
   input,
   textarea,

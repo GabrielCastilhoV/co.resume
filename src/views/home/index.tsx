@@ -1,8 +1,27 @@
 import { useState } from 'react'
 
-import { Fieldset, RichText, TextField } from 'components/elements'
+import {
+  Fieldset,
+  RichText,
+  TextField,
+  TimeLineEducation,
+  TimeLineWork
+} from 'components/elements'
 
 import * as S from './styles'
+
+export type Experience = {
+  employer?: string
+  role?: string
+  duration?: string
+  description?: string
+}
+
+export type Education = {
+  institution?: string
+  program?: string
+  duration?: string
+}
 
 type FieldValues = {
   name: string
@@ -10,14 +29,35 @@ type FieldValues = {
   email: string
   profession: string
   summary: string
+  experience: Experience[]
+  education: Education[]
 }
 
-type Field = keyof FieldValues
-
 export const HomeView = () => {
-  const [values, setValues] = useState<FieldValues>()
+  const [values, setValues] = useState<FieldValues>({
+    name: '',
+    phone: '',
+    email: '',
+    profession: '',
+    summary: '',
+    experience: [
+      {
+        employer: '',
+        role: '',
+        duration: '',
+        description: ''
+      }
+    ],
+    education: [
+      {
+        institution: '',
+        program: '',
+        duration: ''
+      }
+    ]
+  })
 
-  const handleInput = (field: Field, value: string) => {
+  const handleInput = (field: keyof FieldValues, value: unknown) => {
     setValues((state) => ({ ...state, [field]: value }))
   }
 
@@ -65,8 +105,20 @@ export const HomeView = () => {
           />
         </Fieldset>
 
-        <Fieldset legend="Work History">.</Fieldset>
-        <Fieldset legend="Education">.</Fieldset>
+        <Fieldset legend="Work History">
+          <TimeLineWork
+            data={values?.experience}
+            onChange={(value) => handleInput('experience', value)}
+          />
+        </Fieldset>
+
+        <Fieldset legend="Education">
+          <TimeLineEducation
+            data={values?.education}
+            onChange={(value) => handleInput('education', value)}
+          />
+        </Fieldset>
+
         <Fieldset legend="Skills">.</Fieldset>
         <Fieldset legend="Social Links & Websites">.</Fieldset>
         <Fieldset legend="Languages">.</Fieldset>
