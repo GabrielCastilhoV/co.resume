@@ -12,6 +12,7 @@ export const Label = styled.label`
 `
 
 export const InputWrapper = styled.div`
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;

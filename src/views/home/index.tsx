@@ -4,26 +4,28 @@ import {
   Fieldset,
   RichText,
   TextField,
-  CollapseInput
+  CollapseInput,
+  CompoundInput
 } from 'components/elements'
 
-import { EDUCATION_INPUTS, WORK_INPUTS } from 'utils/constants'
+import {
+  PERSONAL_INFORMATION_INPUTS,
+  EDUCATION_INPUTS,
+  WORK_INPUTS,
+  LINKS_INPUTS,
+  SKILLS_INPUTS,
+  LANGUAGES_INPUTS
+} from 'utils/constants'
+
+import type {
+  EducationData,
+  ExperienceData,
+  LanguagesData,
+  LinksData,
+  SkillData
+} from 'types'
 
 import * as S from './styles'
-
-export type Experience = {
-  employer?: string
-  role?: string
-  duration?: string
-  description?: string
-}
-
-export type Education = {
-  institution?: string
-  program?: string
-  duration?: string
-  description?: string
-}
 
 type FieldValues = {
   name: string
@@ -31,8 +33,11 @@ type FieldValues = {
   email: string
   profession: string
   summary: string
-  experience: Experience[]
-  education: Education[]
+  experience: ExperienceData[]
+  education: EducationData[]
+  links: LinksData[]
+  skills: SkillData[]
+  languages: LanguagesData[]
 }
 
 export const HomeView = () => {
@@ -57,6 +62,22 @@ export const HomeView = () => {
         duration: '',
         description: ''
       }
+    ],
+    links: [
+      {
+        service: '',
+        url: ''
+      }
+    ],
+    skills: [
+      {
+        skill: ''
+      }
+    ],
+    languages: [
+      {
+        language: ''
+      }
     ]
   })
 
@@ -71,35 +92,20 @@ export const HomeView = () => {
       <S.Form>
         <Fieldset legend="Personal Information">
           <S.InputContainer>
-            <TextField
-              label="Name"
-              name="name"
-              placeholder="Your name"
-              onInputChange={(value) => handleInput('name', value)}
-            />
-
-            <TextField
-              label="Phone"
-              name="phone"
-              placeholder="Your phone"
-              onInputChange={(value) => handleInput('phone', value)}
-            />
+            {PERSONAL_INFORMATION_INPUTS?.map((input, index) => (
+              <S.InputContainer
+                key={index}
+                style={{ width: index < 2 ? 'calc(50% - 8px)' : '100%' }}
+              >
+                <TextField
+                  {...input}
+                  onInputChange={(value) =>
+                    handleInput(input.name as keyof FieldValues, value)
+                  }
+                />
+              </S.InputContainer>
+            ))}
           </S.InputContainer>
-
-          <TextField
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Your email"
-            onInputChange={(value) => handleInput('email', value)}
-          />
-
-          <TextField
-            label="Profession"
-            name="profession"
-            placeholder="Your profession"
-            onInputChange={(value) => handleInput('profession', value)}
-          />
         </Fieldset>
 
         <Fieldset legend="Professional Summary">
@@ -126,10 +132,30 @@ export const HomeView = () => {
           />
         </Fieldset>
 
-        <Fieldset legend="Skills">.</Fieldset>
-        <Fieldset legend="Social Links & Websites">.</Fieldset>
-        <Fieldset legend="Languages">.</Fieldset>
-        <Fieldset legend="Options">.</Fieldset>
+        <Fieldset legend="Skills">
+          <CompoundInput
+            data={values?.skills}
+            onChange={(value) => handleInput('skills', value)}
+            inputs={SKILLS_INPUTS}
+          />
+        </Fieldset>
+
+        <Fieldset legend="Social Links & Websites">
+          <CompoundInput
+            data={values?.links}
+            onChange={(value) => handleInput('links', value)}
+            inputs={LINKS_INPUTS}
+            hasOptions
+          />
+        </Fieldset>
+
+        <Fieldset legend="Languages">
+          <CompoundInput
+            data={values?.languages}
+            onChange={(value) => handleInput('languages', value)}
+            inputs={LANGUAGES_INPUTS}
+          />
+        </Fieldset>
       </S.Form>
     </S.Wrapper>
   )

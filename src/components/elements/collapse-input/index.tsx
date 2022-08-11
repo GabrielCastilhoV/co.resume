@@ -35,10 +35,7 @@ export const CollapseInput = ({
   )
 
   const addNewItem = useCallback(() => {
-    onChange([
-      ...data,
-      { employer: '', role: '', duration: '', description: '' }
-    ])
+    onChange([...data, {}])
   }, [data])
 
   const removeItem = useCallback(
@@ -69,6 +66,7 @@ export const CollapseInput = ({
               {inputs.map((input, i) =>
                 input.type === 'input' ? (
                   <div
+                    key={i}
                     style={{
                       width: i > 0 ? 'calc(50% - 8px)' : '100%',
                       display: 'flex',
@@ -76,7 +74,6 @@ export const CollapseInput = ({
                     }}
                   >
                     <TextField
-                      key={i}
                       placeholder={input.placeholder}
                       initialValue={item[input.name]}
                       onInputChange={(value) =>
