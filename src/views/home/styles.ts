@@ -8,7 +8,7 @@ export const Wrapper = styled.main`
   display: grid;
 
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1fr 1fr;
   }
 `
 
@@ -41,4 +41,10 @@ export const InputContainer = styled.div`
   @media (min-width: 768px) {
     flex-direction: row;
   }
+`
+
+export const PDFContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 16px 0 16px 16px;
 `

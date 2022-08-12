@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 
 import {
   Fieldset,
   RichText,
   TextField,
   CollapseInput,
-  CompoundInput
+  CompoundInput,
+  PDF
 } from 'components/elements'
 
 import {
@@ -87,6 +89,12 @@ export const HomeView = () => {
 
   console.log(values)
 
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   return (
     <S.Wrapper>
       <S.Form>
@@ -157,6 +165,18 @@ export const HomeView = () => {
           />
         </Fieldset>
       </S.Form>
+
+      {isClient && (
+        <S.PDFContainer>
+          <PDFViewer width="100%" height="100%" showToolbar={false}>
+            <PDF />
+          </PDFViewer>
+
+          <PDFDownloadLink document={<PDF />} fileName={'Teste'}>
+            Download
+          </PDFDownloadLink>
+        </S.PDFContainer>
+      )}
     </S.Wrapper>
   )
 }
