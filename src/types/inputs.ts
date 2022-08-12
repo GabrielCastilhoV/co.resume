@@ -29,4 +29,5 @@ export type LinksData = {
 
 export type LanguagesData = {
   language?: string
+  level?: 'beginner' | 'intermediate' | 'advanced'
 }

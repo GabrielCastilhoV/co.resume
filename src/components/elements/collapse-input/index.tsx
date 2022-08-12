@@ -1,29 +1,27 @@
 import React, { useCallback } from 'react'
 import { Collapse } from 'antd'
-
 import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai'
 
 import { RichText, TextField } from 'components/elements'
+const { Panel } = Collapse
 
 import type { GenericInput } from 'types'
 
-const { Panel } = Collapse
-
 import * as S from './styles'
 
-type CollapseInputProps = {
+type CollapseInputProps<T> = {
   name: 'role' | 'education'
-  data: any[]
+  data: T[]
   inputs: GenericInput[]
-  onChange: (data: any[]) => void
+  onChange: (data: T[]) => void
 }
 
-export const CollapseInput = ({
+export const CollapseInput = <T extends unknown>({
   name,
   data,
   inputs,
   onChange
-}: CollapseInputProps) => {
+}: CollapseInputProps<T>) => {
   const handleInput = useCallback(
     (field: string, value: string, index: number) => {
       const newData = [...data]
@@ -35,7 +33,7 @@ export const CollapseInput = ({
   )
 
   const addNewItem = useCallback(() => {
-    onChange([...data, {}])
+    onChange([...data, {} as T])
   }, [data])
 
   const removeItem = useCallback(
@@ -48,9 +46,9 @@ export const CollapseInput = ({
   return (
     <S.Wrapper>
       <Collapse accordion>
-        {data?.map((item, index) => (
+        {data?.map((item: T | any, index) => (
           <Panel
-            header={item.role || `Your ${name}`}
+            header={item?.role || `Your ${name}`}
             key={index}
             extra={
               <S.CollapseButton

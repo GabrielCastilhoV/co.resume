@@ -1,15 +1,24 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
 `
 
-export const Item = styled.div`
+export const Item = styled.div<{ inverted: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
   margin-bottom: 8px;
+
+  ${({ inverted }) =>
+    inverted &&
+    css`
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.1fr;
+      grid-template-areas: 'input select icon';
+    `}
 
   .ant-select-selector {
     height: 46px !important;
@@ -28,6 +37,8 @@ export const CollapseButton = styled.button`
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
+
+  grid-area: 'icon';
 
   &:hover {
     background: ${({ theme }) => theme.colors.gray100};

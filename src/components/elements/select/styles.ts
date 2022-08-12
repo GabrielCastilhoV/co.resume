@@ -4,6 +4,7 @@ export const Wrapper = styled.select`
   width: 100%;
   height: 48px;
   margin: 16px 0;
+  padding: 0 16px;
 
   color: ${({ theme }) => theme.colors.gray400};
 

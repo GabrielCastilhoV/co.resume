@@ -88,6 +88,6 @@ export const LINKS_INPUTS: GenericInput[] = [
 export const LANGUAGES_INPUTS: GenericInput[] = [
   {
     name: 'language',
-    placeholder: 'Language (beginner, intermediate, advanced)'
+    placeholder: 'Language'
   }
 ]

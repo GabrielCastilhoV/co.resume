@@ -1,28 +1,27 @@
 import React, { Fragment, useCallback } from 'react'
-import { Select } from 'antd'
 import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai'
 
-import { TextField } from 'components/elements'
+import { TextField, Select } from 'components/elements'
 
-import { GenericInput } from 'types'
+import { GenericInput, SelectGeneric } from 'types'
 
 import * as S from './styles'
 
-const { Option } = Select
-
-type CompoundInputProps = {
-  data: any[]
+type CompoundInputProps<T> = {
+  data: T[]
   inputs: GenericInput[]
-  onChange: (data: any[]) => void
-  hasOptions?: boolean
+  options?: SelectGeneric
+  onChange: (data: T[]) => void
+  inverted?: boolean
 }
 
-export const CompoundInput = ({
+export const CompoundInput = <T extends unknown>({
   data,
   onChange,
   inputs,
-  hasOptions = false
-}: CompoundInputProps) => {
+  options,
+  inverted
+}: CompoundInputProps<T>) => {
   const handleInput = useCallback(
     (field: string, value: string, index: number) => {
       const newData = [...data]
@@ -34,7 +33,7 @@ export const CompoundInput = ({
   )
 
   const addNewItem = useCallback(() => {
-    onChange([...data, {}])
+    onChange([...data, {} as T])
   }, [data])
 
   const removeItem = useCallback(
@@ -47,20 +46,14 @@ export const CompoundInput = ({
   return (
     <S.Wrapper>
       {data?.map((item, index) => (
-        <S.Item key={index}>
-          {hasOptions && (
+        <S.Item key={index} inverted={inverted}>
+          {!!options && (
             <Select
-              defaultValue="Select an option"
-              style={{ width: 300 }}
-              onChange={(value) => handleInput('service', value, index)}
-            >
-              <Option value="linkedin">LinkedIn</Option>
-              <Option value="github">Github</Option>
-              <Option value="twitter" disabled>
-                Twitter
-              </Option>
-              <Option value="website">Website</Option>
-            </Select>
+              options={options}
+              onSelectChange={(value) =>
+                handleInput(options?.name, value, index)
+              }
+            />
           )}
 
           {inputs?.map((input, i) => (
@@ -68,6 +61,7 @@ export const CompoundInput = ({
               <TextField
                 placeholder={input.placeholder}
                 onInputChange={(value) => handleInput(input.name, value, index)}
+                style={{ gridArea: 'input' }}
               />
 
               <S.CollapseButton type="button" onClick={() => removeItem(index)}>

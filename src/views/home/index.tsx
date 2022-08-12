@@ -16,7 +16,9 @@ import {
   WORK_INPUTS,
   LINKS_INPUTS,
   SKILLS_INPUTS,
-  LANGUAGES_INPUTS
+  LANGUAGES_INPUTS,
+  LANGUAGES_SELECT,
+  LINKS_SELECT
 } from 'utils/constants'
 
 import type {
@@ -153,7 +155,7 @@ export const HomeView = () => {
             data={values?.links}
             onChange={(value) => handleInput('links', value)}
             inputs={LINKS_INPUTS}
-            hasOptions
+            options={LINKS_SELECT}
           />
         </Fieldset>
 
@@ -162,6 +164,8 @@ export const HomeView = () => {
             data={values?.languages}
             onChange={(value) => handleInput('languages', value)}
             inputs={LANGUAGES_INPUTS}
+            options={LANGUAGES_SELECT}
+            inverted
           />
         </Fieldset>
       </S.Form>
