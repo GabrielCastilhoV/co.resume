@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react'
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
+import { useEffect, useRef, useState } from 'react'
+import { useReactToPrint } from 'react-to-print'
 
 import {
   Fieldset,
   RichText,
   TextField,
   CollapseInput,
-  CompoundInput,
-  PDF
+  CompoundInput
 } from 'components/elements'
 
 import {
@@ -30,8 +29,9 @@ import type {
 } from 'types'
 
 import * as S from './styles'
+import { TemplateOne } from 'components/layouts/resume-templates'
 
-type FieldValues = {
+export type FieldValues = {
   name: string
   phone: string
   email: string
@@ -45,6 +45,8 @@ type FieldValues = {
 }
 
 export const HomeView = () => {
+  const pdfRef = useRef(null)
+  const [isClient, setIsClient] = useState(false)
   const [values, setValues] = useState<FieldValues>({
     name: '',
     phone: '',
@@ -85,17 +87,17 @@ export const HomeView = () => {
     ]
   })
 
+  useEffect(() => {
+    setIsClient(true)
+  }, [values])
+
   const handleInput = (field: keyof FieldValues, value: unknown) => {
     setValues((state) => ({ ...state, [field]: value }))
   }
 
-  console.log(values)
-
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
+  const Print = useReactToPrint({
+    content: () => pdfRef?.current
+  })
 
   return (
     <S.Wrapper>
@@ -172,13 +174,9 @@ export const HomeView = () => {
 
       {isClient && (
         <S.PDFContainer>
-          <PDFViewer width="100%" height="100%" showToolbar={false}>
-            <PDF />
-          </PDFViewer>
+          <TemplateOne data={values} ref={pdfRef} />
 
-          <PDFDownloadLink document={<PDF />} fileName={'Teste'}>
-            Download
-          </PDFDownloadLink>
+          <button onClick={Print}>Dowload</button>
         </S.PDFContainer>
       )}
     </S.Wrapper>

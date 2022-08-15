@@ -1,1 +1,1 @@
-export * from './first-template'
+export * from './template-one'

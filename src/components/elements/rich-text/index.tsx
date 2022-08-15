@@ -20,7 +20,7 @@ export const RichText = ({
   }
 
   editor.on('update', ({ editor }) => {
-    !!onRichTextChange && onRichTextChange(editor.getText())
+    !!onRichTextChange && onRichTextChange(editor.getHTML())
   })
 
   return (
