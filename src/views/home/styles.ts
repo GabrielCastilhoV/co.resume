@@ -45,6 +45,45 @@ export const InputContainer = styled.div`
 
 export const PDFContainer = styled.div`
   width: 100%;
-  height: 100%;
-  padding: 16px 0 16px 16px;
+  height: 90%;
+  margin-left: 8px;
+  padding: 0;
+
+  border-radius: 6px;
+  border: 1px solid #ccc;
+`
+
+export const Footer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+
+  height: 80px;
+  margin-top: 10px;
+  padding: 16px;
+
+  button {
+    border: 1px solid ${({ theme }) => theme.colors.gray200};
+    border-radius: 6px;
+    padding: 8px 16px;
+
+    outline: none;
+    cursor: pointer;
+    background: ${({ theme }) => theme.colors.gray300};
+    color: ${({ theme }) => theme.colors.white};
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
 `

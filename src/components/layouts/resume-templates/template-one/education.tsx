@@ -1,25 +1,26 @@
 import styled from 'styled-components'
 
+import type { EducationData } from 'types'
+
 import { List } from './list'
 
 type EducationProps = {
-  name: string
-  summary: string
+  data: EducationData[]
 }
 
-export const Education = () => (
+export const Education = ({ data }: EducationProps) => (
   <div>
-    <Item>
-      <List>High School</List>
+    {data?.length > 0 &&
+      data?.map((education, index) => (
+        <Item key={index}>
+          {!!education.program && <List>{education.program}</List>}
 
-      <Text>IFRO (2020 - 2023)</Text>
-    </Item>
-
-    <Item>
-      <List>Information systems</List>
-
-      <Text>Centro Universitário São Lucas (2020 - 2023)</Text>
-    </Item>
+          <Text>
+            {education.institution}{' '}
+            {education.duration && '(' + education.duration + ')'}
+          </Text>
+        </Item>
+      ))}
   </div>
 )
 
@@ -28,6 +29,6 @@ const Item = styled.div`
 `
 
 const Text = styled.p`
-  font-size: 11px;
+  font-size: 13px;
   color: #3a3a3a;
 `

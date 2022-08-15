@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import { AiOutlineFileText, AiOutlineDownload } from 'react-icons/ai'
 
+import { TemplateOne } from 'components/layouts/resume-templates'
 import {
   Fieldset,
   RichText,
@@ -29,7 +31,6 @@ import type {
 } from 'types'
 
 import * as S from './styles'
-import { TemplateOne } from 'components/layouts/resume-templates'
 
 export type FieldValues = {
   name: string
@@ -65,8 +66,7 @@ export const HomeView = () => {
       {
         institution: '',
         program: '',
-        duration: '',
-        description: ''
+        duration: ''
       }
     ],
     links: [
@@ -176,7 +176,17 @@ export const HomeView = () => {
         <S.PDFContainer>
           <TemplateOne data={values} ref={pdfRef} />
 
-          <button onClick={Print}>Dowload</button>
+          <S.Footer>
+            <button onClick={() => alert('Coming soon')}>
+              Change Template
+              <AiOutlineFileText />
+            </button>
+
+            <button onClick={Print}>
+              Dowload
+              <AiOutlineDownload />
+            </button>
+          </S.Footer>
         </S.PDFContainer>
       )}
     </S.Wrapper>

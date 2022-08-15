@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 
 import { Contact } from './contact'
@@ -10,7 +11,6 @@ import { Skills } from './skills'
 import { Title } from './title'
 
 import type { FieldValues } from 'views/home'
-import { forwardRef, useRef } from 'react'
 
 type FirstTemplateProps = {
   ref: React.Ref<HTMLDivElement>
@@ -29,16 +29,20 @@ export const TemplateOne: React.FC<FirstTemplateProps> = forwardRef(
       </Body>
 
       <SideBar>
-        <Contact />
+        <Contact
+          data={props.data.links}
+          email={props.data.email}
+          phone={props.data.phone}
+        />
 
         <Title title="SKILLS" />
-        <Skills />
+        <Skills data={props.data.skills} />
 
         <Title title="LANGUAGES" />
-        <Languages />
+        <Languages data={props.data.languages} />
 
         <Title title="EDUCATION" />
-        <Education />
+        <Education data={props.data.education} />
       </SideBar>
     </Page>
   )

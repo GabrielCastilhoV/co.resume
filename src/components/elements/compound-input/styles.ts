@@ -50,6 +50,7 @@ export const AddButton = styled.button`
   background: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
   margin-top: 16px;
 
   display: flex;

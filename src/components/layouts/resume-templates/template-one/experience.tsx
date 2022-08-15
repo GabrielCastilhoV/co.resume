@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import type { ExperienceData } from 'types'
 
 import { Title } from './title'
@@ -18,7 +19,7 @@ export const Experience = ({ data }: ExperienceProps) => {
             <Role>{experience.role}</Role>
             <Employer>
               {experience.employer}{' '}
-              {experience.duration && '|' + experience.duration}
+              {experience.duration && '| ' + experience.duration}
             </Employer>
 
             <Description

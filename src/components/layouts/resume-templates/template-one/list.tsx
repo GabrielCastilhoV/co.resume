@@ -13,17 +13,17 @@ export const List = ({ children }: ListProps) => (
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 5px;
   margin-bottom: 5px;
 `
 
 const BulletPoint = styled.p`
   width: 10px;
-  font-size: 12px;
+  font-size: 14px;
 `
 
 const ItemContent = styled.p`
-  flex: 1;
   color: #3a3a3a;
   font-weight: bold;
 `

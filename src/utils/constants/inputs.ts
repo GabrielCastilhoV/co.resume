@@ -63,11 +63,6 @@ export const EDUCATION_INPUTS: GenericInput[] = [
     name: 'duration',
     placeholder: 'From - Until',
     type: 'input'
-  },
-
-  {
-    name: 'description',
-    type: 'textarea'
   }
 ]
 

@@ -1,76 +1,87 @@
 /* eslint-disable jsx-a11y/alt-text */
 import styled from 'styled-components'
 
+import type { LinksData } from 'types'
+
+import {
+  AiOutlineLinkedin,
+  AiOutlineGithub,
+  AiOutlineLink,
+  AiOutlineMail
+} from 'react-icons/ai'
+
+import { BsTelephone } from 'react-icons/bs'
+
+type ContactProps = {
+  data: LinksData[]
+  email: string
+  phone: string
+}
+
+export const Contact = ({ data, email, phone }: ContactProps) => {
+  const serviceImage = {
+    phone: <BsTelephone />,
+    email: <AiOutlineMail />,
+    website: <AiOutlineLink />,
+    github: <AiOutlineGithub />,
+    linkedin: <AiOutlineLinkedin />
+  }
+
+  return (
+    <Container>
+      {!!email && (
+        <Item>
+          <AiOutlineMail />
+
+          <a href={'mailto:' + email}>
+            <Text>{email}</Text>
+          </a>
+        </Item>
+      )}
+
+      {!!phone && (
+        <Item>
+          <BsTelephone />
+
+          <a href={'tel:' + phone}>
+            <Text>{phone}</Text>
+          </a>
+        </Item>
+      )}
+
+      {data?.length > 0 &&
+        data?.map((link, index) => (
+          <Item key={index}>
+            {serviceImage[link.service]}
+
+            <a href={link.url}>
+              <Text>{link.url}</Text>
+            </a>
+          </Item>
+        ))}
+    </Container>
+  )
+}
+
 const Container = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 `
 
 const Item = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+
+    color: #376ffe;
+  }
 `
 
 const Text = styled.p`
   color: #3a3a3a;
   text-decoration: none;
-  margin-left: 8px;
+  margin-left: 10px;
 `
-
-type ContactProps = {
-  name: string
-  summary: string
-}
-
-export const Contact = () => (
-  <Container>
-    <Item>
-      <img
-        src="./images/icon-link.png"
-        style={{ width: '24px', height: '24px' }}
-      />
-
-      <a href="https://gabrielcastilho.com">
-        <Text>gabrielcastilho.com</Text>
-      </a>
-    </Item>
-
-    <Item>
-      <img src="./images/email.png" style={{ width: '24px', height: '24px' }} />
-
-      <a href="gabrielcastilho.com">
-        <Text>abc@gmail.com</Text>
-      </a>
-    </Item>
-
-    <Item>
-      <img src="./images/phone.png" style={{ width: '24px', height: '24px' }} />
-
-      <a href="gabrielcastilho.com">
-        <Text>69 9 9294-3081</Text>
-      </a>
-    </Item>
-
-    <Item>
-      <img
-        src="./images/github.png"
-        style={{ width: '24px', height: '24px' }}
-      />
-
-      <a href="gabrielcastilho.com">
-        <Text>GabrielCastilhoV</Text>
-      </a>
-    </Item>
-
-    <Item>
-      <img
-        src="./images/linkedin.png"
-        style={{ width: '24px', height: '24px' }}
-      />
-
-      <a href="gabrielcastilho.com">
-        <Text>GabrielCastilhoV</Text>
-      </a>
-    </Item>
-  </Container>
-)

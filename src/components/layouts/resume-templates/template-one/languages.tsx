@@ -1,35 +1,36 @@
 import styled, { css } from 'styled-components'
 
+import type { LanguagesData } from 'types'
+
 type LanguagesProps = {
-  name: string
-  summary: string
+  data: LanguagesData[]
 }
 
-export const Languages = () => {
-  const english = 3
-  const portuguese = 5
+export const Languages = ({ data }: LanguagesProps) => {
+  const level = {
+    beginner: 1,
+    intermediate: 3,
+    advanced: 5
+  }
 
   return (
     <Container>
-      <Item>
-        <p>English</p>
+      {data?.length > 0 &&
+        data?.map((language, index) => (
+          <Item key={index}>
+            <p>{language.language}</p>
 
-        <WrapperCircle>
-          {Array.from({ length: 5 }, (_, index) => index + 1).map((item) => (
-            <Circle key={item} active={item <= english} />
-          ))}
-        </WrapperCircle>
-      </Item>
-
-      <Item>
-        <p>Portuguese</p>
-
-        <WrapperCircle>
-          {Array.from({ length: 5 }, (_, index) => index + 1).map((item) => (
-            <Circle key={item} active={item <= portuguese} />
-          ))}
-        </WrapperCircle>
-      </Item>
+            {!!language.level && (
+              <WrapperCircle>
+                {Array.from({ length: 5 }, (_, index) => index + 1).map(
+                  (item) => (
+                    <Circle key={item} active={item <= level[language.level]} />
+                  )
+                )}
+              </WrapperCircle>
+            )}
+          </Item>
+        ))}
     </Container>
   )
 }

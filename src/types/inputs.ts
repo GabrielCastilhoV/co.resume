@@ -15,7 +15,6 @@ export type EducationData = {
   institution?: string
   program?: string
   duration?: string
-  description?: string
 }
 
 export type SkillData = {
