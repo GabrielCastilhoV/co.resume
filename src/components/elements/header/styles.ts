@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.header`
   width: 100%;
@@ -26,18 +26,56 @@ export const LogoName = styled.h2`
 `
 
 export const LanguageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-
+  width: 110px;
   background: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
 
   cursor: pointer;
+  position: relative;
+`
+
+export const ActiveLanguage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
 `
 
 export const LanguageName = styled.p`
   color: ${({ theme }) => theme.colors.gray400};
   font-size: ${({ theme }) => theme.font.sizes.xs};
+`
+
+export const LanguageList = styled.ul<{ isOpen: boolean }>`
+  display: none;
+  list-style: none;
+
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 8px 0;
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      display: block;
+    `}
+`
+
+export const LanguageItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.gray100};
+  }
 `

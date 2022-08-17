@@ -1,11 +1,19 @@
-export const languages = [
+export type LanguagesProps = {
+  name: string
+  code: string
+  image: string
+}
+
+export const languages: LanguagesProps[] = [
   {
-    name: 'English',
+    name: 'en-US',
+    code: 'en',
     image: '/icons/flags/eua.svg'
   },
 
   {
-    name: 'Português',
+    name: 'pt-BR',
+    code: 'pt',
     image: '/icons/flags/br.svg'
   }
 ]
