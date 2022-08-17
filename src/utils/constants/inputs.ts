@@ -1,88 +1,111 @@
 import type { GenericInput } from 'types'
+import { useTranslation } from 'next-i18next'
 
-export const PERSONAL_INFORMATION_INPUTS: GenericInput[] = [
-  {
-    name: 'name',
-    placeholder: 'Your name'
-  },
+export const PERSONAL_INFORMATION_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
 
-  {
-    name: 'phone',
-    placeholder: 'Your phone'
-  },
+  return [
+    {
+      name: 'name',
+      placeholder: t('your-name')
+    },
 
-  {
-    name: 'email',
-    placeholder: 'Your email'
-  },
+    {
+      name: 'phone',
+      placeholder: t('your-phone')
+    },
 
-  {
-    name: 'profession',
-    placeholder: 'Your profession'
-  }
-]
+    {
+      name: 'email',
+      placeholder: t('your-email')
+    },
 
-export const WORK_INPUTS: GenericInput[] = [
-  {
-    name: 'role',
-    placeholder: 'Position or role',
-    type: 'input'
-  },
+    {
+      name: 'profession',
+      placeholder: t('your-profession')
+    }
+  ]
+}
 
-  {
-    name: 'employer',
-    placeholder: 'Employer',
-    type: 'input'
-  },
+export const WORK_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
 
-  {
-    name: 'duration',
-    placeholder: 'From - Until',
-    type: 'input'
-  },
+  return [
+    {
+      name: 'role',
+      placeholder: t('your-role'),
+      type: 'input'
+    },
 
-  {
-    name: 'description',
-    type: 'textarea'
-  }
-]
+    {
+      name: 'employer',
+      placeholder: t('employer'),
+      type: 'input'
+    },
 
-export const EDUCATION_INPUTS: GenericInput[] = [
-  {
-    name: 'program',
-    placeholder: 'Degree or program',
-    type: 'input'
-  },
-  {
-    name: 'institution',
-    placeholder: 'School or Institution',
-    type: 'input'
-  },
+    {
+      name: 'duration',
+      placeholder: t('from-until'),
+      type: 'input'
+    },
 
-  {
-    name: 'duration',
-    placeholder: 'From - Until',
-    type: 'input'
-  }
-]
+    {
+      name: 'description',
+      type: 'textarea'
+    }
+  ]
+}
 
-export const SKILLS_INPUTS: GenericInput[] = [
-  {
-    name: 'skill',
-    placeholder: 'Skill'
-  }
-]
+export const EDUCATION_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
 
-export const LINKS_INPUTS: GenericInput[] = [
-  {
-    name: 'url',
-    placeholder: 'URL'
-  }
-]
+  return [
+    {
+      name: 'program',
+      placeholder: t('degree-or-program'),
+      type: 'input'
+    },
+    {
+      name: 'institution',
+      placeholder: t('school-or-institution'),
+      type: 'input'
+    },
 
-export const LANGUAGES_INPUTS: GenericInput[] = [
-  {
-    name: 'language',
-    placeholder: 'Language'
-  }
-]
+    {
+      name: 'duration',
+      placeholder: t('from-until'),
+      type: 'input'
+    }
+  ]
+}
+
+export const SKILLS_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
+
+  return [
+    {
+      name: 'skill',
+      placeholder: t('skill')
+    }
+  ]
+}
+
+export const LINKS_INPUTS = (): GenericInput[] => {
+  return [
+    {
+      name: 'url',
+      placeholder: 'URL'
+    }
+  ]
+}
+
+export const LANGUAGES_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
+
+  return [
+    {
+      name: 'language',
+      placeholder: t('language')
+    }
+  ]
+}

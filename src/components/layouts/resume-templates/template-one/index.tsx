@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import { forwardRef } from 'react'
+import { useTranslation } from 'next-i18next'
 import styled from 'styled-components'
 
 import { Contact } from './contact'
@@ -18,34 +19,42 @@ type FirstTemplateProps = {
 }
 
 export const TemplateOne: React.FC<FirstTemplateProps> = forwardRef(
-  (props, ref) => (
-    <Page ref={ref}>
-      <Body>
-        <Header name={props.data.name} summary={props.data.summary} />
+  (props, ref) => {
+    const { t } = useTranslation('common')
 
-        <Content>
-          <Experience data={props.data.experience} />
-        </Content>
-      </Body>
+    return (
+      <Page ref={ref}>
+        <Body>
+          <Header
+            name={props.data.name}
+            summary={props.data.summary}
+            role={props.data.profession}
+          />
 
-      <SideBar>
-        <Contact
-          data={props.data.links}
-          email={props.data.email}
-          phone={props.data.phone}
-        />
+          <Content>
+            <Experience data={props.data.experience} />
+          </Content>
+        </Body>
 
-        <Title title="SKILLS" />
-        <Skills data={props.data.skills} />
+        <SideBar>
+          <Contact
+            data={props.data.links}
+            email={props.data.email}
+            phone={props.data.phone}
+          />
 
-        <Title title="LANGUAGES" />
-        <Languages data={props.data.languages} />
+          <Title title={t('skills')} />
+          <Skills data={props.data.skills} />
 
-        <Title title="EDUCATION" />
-        <Education data={props.data.education} />
-      </SideBar>
-    </Page>
-  )
+          <Title title={t('languages')} />
+          <Languages data={props.data.languages} />
+
+          <Title title={t('education')} />
+          <Education data={props.data.education} />
+        </SideBar>
+      </Page>
+    )
+  }
 )
 
 const Page = styled.div`

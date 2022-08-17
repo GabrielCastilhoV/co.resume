@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import { useTranslation } from 'next-i18next'
+
 import { AiOutlineFileText, AiOutlineDownload } from 'react-icons/ai'
 
 import { TemplateOne } from 'components/layouts/resume-templates'
@@ -47,6 +49,7 @@ export type FieldValues = {
 
 export const HomeView = () => {
   const pdfRef = useRef(null)
+  const { t } = useTranslation('common')
   const [isClient, setIsClient] = useState(false)
   const [values, setValues] = useState<FieldValues>({
     name: '',
@@ -102,9 +105,9 @@ export const HomeView = () => {
   return (
     <S.Wrapper>
       <S.Form>
-        <Fieldset legend="Personal Information">
+        <Fieldset legend={t('personal-information')}>
           <S.InputContainer>
-            {PERSONAL_INFORMATION_INPUTS?.map((input, index) => (
+            {PERSONAL_INFORMATION_INPUTS()?.map((input, index) => (
               <S.InputContainer
                 key={index}
                 style={{ width: index < 2 ? 'calc(50% - 8px)' : '100%' }}
@@ -120,53 +123,55 @@ export const HomeView = () => {
           </S.InputContainer>
         </Fieldset>
 
-        <Fieldset legend="Professional Summary">
+        <Fieldset legend={t('professional-summary')}>
           <RichText
             onRichTextChange={(value) => handleInput('summary', value)}
           />
         </Fieldset>
 
-        <Fieldset legend="Work History">
+        <Fieldset legend={t('work-history')}>
           <CollapseInput
             name="role"
+            collapseHeader={t('your-role')}
             data={values?.experience}
-            inputs={WORK_INPUTS}
+            inputs={WORK_INPUTS()}
             onChange={(value) => handleInput('experience', value)}
           />
         </Fieldset>
 
-        <Fieldset legend="Education">
+        <Fieldset legend={t('education')}>
           <CollapseInput
             name="education"
+            collapseHeader={t('your-education')}
             data={values?.education}
-            inputs={EDUCATION_INPUTS}
+            inputs={EDUCATION_INPUTS()}
             onChange={(value) => handleInput('education', value)}
           />
         </Fieldset>
 
-        <Fieldset legend="Skills">
+        <Fieldset legend={t('skills')}>
           <CompoundInput
             data={values?.skills}
             onChange={(value) => handleInput('skills', value)}
-            inputs={SKILLS_INPUTS}
+            inputs={SKILLS_INPUTS()}
           />
         </Fieldset>
 
-        <Fieldset legend="Social Links & Websites">
+        <Fieldset legend={t('social-links')}>
           <CompoundInput
             data={values?.links}
             onChange={(value) => handleInput('links', value)}
-            inputs={LINKS_INPUTS}
+            inputs={LINKS_INPUTS()}
             options={LINKS_SELECT}
           />
         </Fieldset>
 
-        <Fieldset legend="Languages">
+        <Fieldset legend={t('languages')}>
           <CompoundInput
             data={values?.languages}
             onChange={(value) => handleInput('languages', value)}
-            inputs={LANGUAGES_INPUTS}
-            options={LANGUAGES_SELECT}
+            inputs={LANGUAGES_INPUTS()}
+            options={LANGUAGES_SELECT()}
             inverted
           />
         </Fieldset>
@@ -178,12 +183,12 @@ export const HomeView = () => {
 
           <S.Footer>
             <button onClick={() => alert('Coming soon')}>
-              Change Template
+              {t('change-template')}
               <AiOutlineFileText />
             </button>
 
             <button onClick={Print}>
-              Dowload
+              {t('download')}
               <AiOutlineDownload />
             </button>
           </S.Footer>

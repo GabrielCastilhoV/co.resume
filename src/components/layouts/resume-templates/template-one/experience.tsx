@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import styled from 'styled-components'
 
 import type { ExperienceData } from 'types'
@@ -9,9 +10,11 @@ type ExperienceProps = {
 }
 
 export const Experience = ({ data }: ExperienceProps) => {
+  const { t } = useTranslation('common')
+
   return (
     <div>
-      <Title title="EXPERIENCE" />
+      <Title title={t('experience')} />
 
       {data?.length > 0 &&
         data?.map((experience, index) => (

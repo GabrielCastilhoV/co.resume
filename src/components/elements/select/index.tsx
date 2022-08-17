@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import type { SelectGeneric } from 'types'
 
@@ -15,6 +16,7 @@ export const Select = ({
   initialValue,
   onSelectChange
 }: SelectProps) => {
+  const { t } = useTranslation('inputs')
   const [value, setValue] = useState(initialValue)
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +29,7 @@ export const Select = ({
   return (
     <S.Wrapper onChange={onChange} value={value}>
       <option value="" hidden>
-        Select an option
+        {t('select-option')}
       </option>
 
       {options?.options?.map((option) => (

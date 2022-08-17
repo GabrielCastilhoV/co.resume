@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { useTranslation } from 'next-i18next'
 import { Collapse } from 'antd'
 import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai'
 
@@ -12,6 +13,7 @@ import * as S from './styles'
 type CollapseInputProps<T> = {
   name: 'role' | 'education'
   data: T[]
+  collapseHeader?: string
   inputs: GenericInput[]
   onChange: (data: T[]) => void
 }
@@ -20,8 +22,11 @@ export const CollapseInput = <T extends unknown>({
   name,
   data,
   inputs,
-  onChange
+  onChange,
+  collapseHeader
 }: CollapseInputProps<T>) => {
+  const { t } = useTranslation('common')
+
   const handleInput = useCallback(
     (field: string, value: string, index: number) => {
       const newData = [...data]
@@ -48,7 +53,7 @@ export const CollapseInput = <T extends unknown>({
       <Collapse accordion>
         {data?.map((item: T | any, index) => (
           <Panel
-            header={item?.role || `Your ${name}`}
+            header={item?.role || collapseHeader}
             key={index}
             extra={
               <S.CollapseButton
@@ -95,7 +100,7 @@ export const CollapseInput = <T extends unknown>({
       </Collapse>
 
       <S.AddButton type="button" onClick={addNewItem}>
-        <AiOutlinePlus /> Add new
+        <AiOutlinePlus /> {t('add-new')}
       </S.AddButton>
     </S.Wrapper>
   )

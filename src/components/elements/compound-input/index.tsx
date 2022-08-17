@@ -1,4 +1,5 @@
 import React, { Fragment, useCallback } from 'react'
+import { useTranslation } from 'next-i18next'
 import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai'
 
 import { TextField, Select } from 'components/elements'
@@ -22,6 +23,8 @@ export const CompoundInput = <T extends unknown>({
   options,
   inverted
 }: CompoundInputProps<T>) => {
+  const { t } = useTranslation('common')
+
   const handleInput = useCallback(
     (field: string, value: string, index: number) => {
       const newData = [...data]
@@ -73,7 +76,7 @@ export const CompoundInput = <T extends unknown>({
       ))}
 
       <S.AddButton type="button" onClick={addNewItem}>
-        <AiOutlinePlus /> Add new
+        <AiOutlinePlus /> {t('add-new')}
       </S.AddButton>
     </S.Wrapper>
   )

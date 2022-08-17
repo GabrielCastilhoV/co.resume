@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next'
+
 import type { SelectGeneric } from 'types'
 
 export const LINKS_SELECT: SelectGeneric = {
@@ -20,22 +22,26 @@ export const LINKS_SELECT: SelectGeneric = {
   ]
 }
 
-export const LANGUAGES_SELECT: SelectGeneric = {
-  name: 'level',
-  options: [
-    {
-      value: 'beginner',
-      label: 'Beginner'
-    },
+export const LANGUAGES_SELECT = (): SelectGeneric => {
+  const { t } = useTranslation('inputs')
 
-    {
-      value: 'intermediate',
-      label: 'Intermediate'
-    },
+  return {
+    name: 'level',
+    options: [
+      {
+        value: 'beginner',
+        label: t('beginner')
+      },
 
-    {
-      value: 'advanced',
-      label: 'Advanced'
-    }
-  ]
+      {
+        value: 'intermediate',
+        label: t('intermediate')
+      },
+
+      {
+        value: 'advanced',
+        label: t('advanced')
+      }
+    ]
+  }
 }
