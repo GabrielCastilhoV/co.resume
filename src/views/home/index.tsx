@@ -179,7 +179,9 @@ export const HomeView = () => {
 
       {isClient && (
         <S.PDFContainer>
-          <TemplateOne data={values} ref={pdfRef} />
+          <S.Document>
+            <TemplateOne data={values} ref={pdfRef} />
+          </S.Document>
 
           <S.Footer>
             <button onClick={() => alert('Coming soon')}>
