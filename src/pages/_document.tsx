@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html lang="en-US">
+      <Html lang={this.props.__NEXT_DATA__.query.locale as string}>
         <Head>
           <meta charSet="utf-8" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
