@@ -53,6 +53,7 @@ export const CompoundInput = <T extends unknown>({
           {!!options && (
             <Select
               options={options}
+              initialValue={data[index][options.name]}
               onSelectChange={(value) =>
                 handleInput(options?.name, value, index)
               }
@@ -63,6 +64,7 @@ export const CompoundInput = <T extends unknown>({
             <Fragment key={i}>
               <TextField
                 placeholder={input.placeholder}
+                initialValue={item[input.name]}
                 onInputChange={(value) => handleInput(input.name, value, index)}
                 style={{ gridArea: 'input' }}
               />

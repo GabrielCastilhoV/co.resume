@@ -17,19 +17,17 @@ export const Select = ({
   onSelectChange
 }: SelectProps) => {
   const { t } = useTranslation('inputs')
-  const [value, setValue] = useState(initialValue)
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.currentTarget.value
-    setValue(newValue)
 
     !!onSelectChange && onSelectChange(newValue)
   }
 
   return (
-    <S.Wrapper onChange={onChange} value={value}>
-      <option value="" hidden>
-        {t('select-option')}
+    <S.Wrapper onChange={onChange}>
+      <option value={initialValue} hidden>
+        {t(initialValue) || t('select-option')}
       </option>
 
       {options?.options?.map((option) => (

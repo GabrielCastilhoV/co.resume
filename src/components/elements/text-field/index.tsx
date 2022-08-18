@@ -12,11 +12,8 @@ export const TextField = ({
   disabled = false,
   ...rest
 }: TextFieldProps) => {
-  const [value, setValue] = useState(initialValue)
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
-    setValue(newValue)
 
     !!onInputChange && onInputChange(newValue)
   }
@@ -28,8 +25,8 @@ export const TextField = ({
       <S.InputWrapper style={{ marginTop: !!label ? '8px' : 0 }}>
         <S.Input
           onChange={onChange}
-          value={value}
           disabled={disabled}
+          defaultValue={initialValue || ''}
           name={name}
           {...(label ? { id: name } : {})}
           {...rest}
