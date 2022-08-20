@@ -21,7 +21,8 @@ import {
   SKILLS_INPUTS,
   LANGUAGES_INPUTS,
   LANGUAGES_SELECT,
-  LINKS_SELECT
+  LINKS_SELECT,
+  DEFAULT_DATA
 } from 'utils/constants'
 
 import type {
@@ -52,6 +53,7 @@ export const HomeView = () => {
   const { t } = useTranslation('common')
 
   const [isClient, setIsClient] = useState(false)
+  const [hadModification, setHadModification] = useState(false)
   const [values, setValues] = useState<FieldValues>({
     name: '',
     phone: '',
@@ -92,18 +94,24 @@ export const HomeView = () => {
   })
 
   useEffect(() => {
+    setIsClient(true)
+
     const localValues = localStorage.getItem('values')
+    const localNumberModifications = localStorage.getItem('modifications')
 
     if (localValues) {
       setValues(JSON.parse(localValues))
     }
+
+    if (localNumberModifications) {
+      setHadModification(JSON.parse(localNumberModifications))
+    }
   }, [])
 
   useEffect(() => {
-    setIsClient(true)
-
     const timer = setTimeout(() => {
       localStorage.setItem('values', JSON.stringify(values))
+      localStorage.setItem('modifications', JSON.stringify(hadModification))
     }, 3000)
 
     return () => clearTimeout(timer)
@@ -111,6 +119,7 @@ export const HomeView = () => {
 
   const handleInput = (field: keyof FieldValues, value: unknown) => {
     setValues((state) => ({ ...state, [field]: value }))
+    setHadModification(true)
   }
 
   const handlePrint = useReactToPrint({
@@ -196,7 +205,10 @@ export const HomeView = () => {
         {isClient && (
           <S.PDFContainer>
             <S.Document>
-              <TemplateOne data={values} ref={pdfRef} />
+              <TemplateOne
+                data={hadModification ? values : DEFAULT_DATA}
+                ref={pdfRef}
+              />
             </S.Document>
 
             <S.Footer>

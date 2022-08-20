@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import type { TextFieldProps } from './types'
 
@@ -12,8 +12,22 @@ export const TextField = ({
   disabled = false,
   ...rest
 }: TextFieldProps) => {
+  const [mounted, setMounted] = useState(false)
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (mounted) {
+      setValue(initialValue)
+    }
+  }, [mounted])
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value
+    setValue(newValue)
 
     !!onInputChange && onInputChange(newValue)
   }
@@ -26,7 +40,7 @@ export const TextField = ({
         <S.Input
           onChange={onChange}
           disabled={disabled}
-          defaultValue={initialValue || ''}
+          value={value}
           name={name}
           {...(label ? { id: name } : {})}
           {...rest}
