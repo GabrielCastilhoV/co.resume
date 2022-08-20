@@ -44,7 +44,7 @@ export const DEFAULT_DATA: FieldValues = {
   links: [
     {
       service: 'linkedin',
-      url: 'https://linkedin.com'
+      username: 'gabrielcastilhov'
     }
   ]
 }
