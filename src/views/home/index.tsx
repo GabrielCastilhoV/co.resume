@@ -149,7 +149,6 @@ export const HomeView = () => {
 
           <Fieldset legend={t('work-history')}>
             <CollapseInput
-              name="role"
               collapseHeader={t('your-role')}
               data={values?.experience}
               inputs={WORK_INPUTS()}
@@ -159,7 +158,6 @@ export const HomeView = () => {
 
           <Fieldset legend={t('education')}>
             <CollapseInput
-              name="education"
               collapseHeader={t('your-education')}
               data={values?.education}
               inputs={EDUCATION_INPUTS()}

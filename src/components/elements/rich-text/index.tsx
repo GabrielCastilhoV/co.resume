@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { FaBold, FaItalic } from 'react-icons/fa'
@@ -10,16 +11,24 @@ export const RichText = ({
   initialValue = '',
   onRichTextChange
 }: RichTextProps) => {
-  const editor = useEditor({
+  const [mounted, setMounted] = useState(false)
+
+  let editor = useEditor({
     extensions: [StarterKit],
     content: initialValue
   })
 
-  if (!editor) {
-    return null
-  }
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
-  editor.on('update', ({ editor }) => {
+  useEffect(() => {
+    if (mounted) {
+      editor?.commands?.setContent(initialValue)
+    }
+  }, [mounted])
+
+  editor?.on('update', ({ editor }) => {
     !!onRichTextChange && onRichTextChange(editor.getHTML())
   })
 
@@ -27,17 +36,17 @@ export const RichText = ({
     <S.Wrapper>
       <S.Toolbar>
         <S.Button
-          onClick={() => editor.chain().focus().toggleBold().run()}
+          onClick={() => editor?.chain().focus().toggleBold().run()}
           type="button"
-          isActive={editor.isActive('bold')}
+          isActive={editor?.isActive('bold')}
         >
           <FaBold />
         </S.Button>
 
         <S.Button
-          onClick={() => editor.chain().focus().toggleItalic().run()}
+          onClick={() => editor?.chain().focus().toggleItalic().run()}
           type="button"
-          isActive={editor.isActive('italic')}
+          isActive={editor?.isActive('italic')}
         >
           <FaItalic />
         </S.Button>

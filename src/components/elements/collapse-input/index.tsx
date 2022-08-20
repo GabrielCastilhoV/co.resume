@@ -11,7 +11,6 @@ import type { GenericInput } from 'types'
 import * as S from './styles'
 
 type CollapseInputProps<T> = {
-  name: 'role' | 'education'
   data: T[]
   collapseHeader?: string
   inputs: GenericInput[]
@@ -19,7 +18,6 @@ type CollapseInputProps<T> = {
 }
 
 export const CollapseInput = <T extends unknown>({
-  name,
   data,
   inputs,
   onChange,
