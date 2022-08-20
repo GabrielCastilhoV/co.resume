@@ -27,6 +27,18 @@ export const Contact = ({ data, email, phone }: ContactProps) => {
     linkedin: <AiOutlineLinkedin />
   }
 
+  const generateUrl = ({ service, username }: LinksData) => {
+    if (service === 'linkedin') {
+      return `https://www.linkedin.com/in/${username}`
+    }
+
+    if (service === 'github') {
+      return `https://www.github.com/${username}`
+    }
+
+    return username
+  }
+
   return (
     <Container>
       {!!email && (
@@ -54,8 +66,13 @@ export const Contact = ({ data, email, phone }: ContactProps) => {
           <Item key={index}>
             {serviceImage[link.service]}
 
-            <a href={link.url}>
-              <Text>{link.url}</Text>
+            <a
+              href={generateUrl({
+                service: link.service,
+                username: link.username
+              })}
+            >
+              <Text>{link.username}</Text>
             </a>
           </Item>
         ))}

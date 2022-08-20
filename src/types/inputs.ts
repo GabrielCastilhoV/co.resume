@@ -23,7 +23,7 @@ export type SkillData = {
 
 export type LinksData = {
   service?: string
-  url?: string
+  username?: string
 }
 
 export type LanguagesData = {

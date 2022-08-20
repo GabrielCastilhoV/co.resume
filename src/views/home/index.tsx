@@ -78,7 +78,7 @@ export const HomeView = () => {
     links: [
       {
         service: '',
-        url: ''
+        username: ''
       }
     ],
     skills: [

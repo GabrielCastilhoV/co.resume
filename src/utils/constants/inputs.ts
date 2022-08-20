@@ -91,10 +91,12 @@ export const SKILLS_INPUTS = (): GenericInput[] => {
 }
 
 export const LINKS_INPUTS = (): GenericInput[] => {
+  const { t } = useTranslation('inputs')
+
   return [
     {
-      name: 'url',
-      placeholder: 'URL'
+      name: 'username',
+      placeholder: t('username')
     }
   ]
 }
