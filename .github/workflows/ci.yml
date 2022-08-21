@@ -1,0 +1,39 @@
+name: ci
+on: [pull_request]
+
+jobs:
+  setup:
+    name: Setup node
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+
+      - name: Download packages
+        run: yarn
+
+  lint:
+    name: Run Lint code
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+
+      - name: Download packages
+        run: yarn
+
+      - name: Lint packages
+        run: yarn lint
