@@ -26,7 +26,7 @@
     "@tiptap/starter-kit": "^2.0.0-beta.191",
     "antd": "^4.22.7",
     "next": "^12.2.5",
-    "next-i18next": "^11.3.0",
+    "next-i18next": "^12.0.0",
     "next-seo": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
