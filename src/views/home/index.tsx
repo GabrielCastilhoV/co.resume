@@ -10,7 +10,8 @@ import {
   RichText,
   TextField,
   CollapseInput,
-  CompoundInput
+  CompoundInput,
+  Dialog
 } from 'components/elements'
 
 import {
@@ -52,8 +53,9 @@ export const HomeView = () => {
   const pdfRef = useRef(null)
   const { t } = useTranslation('common')
 
-  const [isClient, setIsClient] = useState(false)
-  const [hadModification, setHadModification] = useState(false)
+  const [isClient, setIsClient] = useState<boolean>(false)
+  const [dialogIsOpen, setDialogIsOpen] = useState<boolean>(false)
+  const [hadModification, setHadModification] = useState<boolean>(false)
   const [values, setValues] = useState<FieldValues>({
     name: '',
     phone: '',
@@ -212,7 +214,7 @@ export const HomeView = () => {
             </S.Document>
 
             <S.Footer>
-              <button onClick={() => alert('Coming soon')}>
+              <button onClick={() => setDialogIsOpen(!dialogIsOpen)}>
                 {t('change-template')}
                 <AiOutlineFileText />
               </button>
@@ -225,6 +227,13 @@ export const HomeView = () => {
           </S.PDFContainer>
         )}
       </S.Wrapper>
+
+      <Dialog
+        isOpen={dialogIsOpen}
+        handleChangeStatus={() => setDialogIsOpen(!dialogIsOpen)}
+      >
+        .
+      </Dialog>
     </>
   )
 }
