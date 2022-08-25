@@ -11,7 +11,7 @@ import { Languages } from './languages'
 import { Skills } from './skills'
 import { Title } from './title'
 
-import type { FieldValues } from 'views/home'
+import type { FieldValues } from 'hooks'
 
 type FirstTemplateProps = {
   ref: React.Ref<HTMLDivElement>
