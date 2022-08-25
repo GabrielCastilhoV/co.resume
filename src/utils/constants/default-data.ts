@@ -1,4 +1,4 @@
-import { FieldValues } from 'views'
+import { FieldValues } from 'hooks'
 
 export const DEFAULT_DATA: FieldValues = {
   name: 'Your name',
@@ -45,6 +45,45 @@ export const DEFAULT_DATA: FieldValues = {
     {
       service: 'linkedin',
       username: 'gabrielcastilhov'
+    }
+  ]
+}
+
+export const DEFAULT_DATA_EMPTY: FieldValues = {
+  name: '',
+  phone: '',
+  email: '',
+  profession: '',
+  summary: '',
+  experience: [
+    {
+      employer: '',
+      role: '',
+      duration: '',
+      description: ''
+    }
+  ],
+  education: [
+    {
+      institution: '',
+      program: '',
+      duration: ''
+    }
+  ],
+  links: [
+    {
+      service: '',
+      username: ''
+    }
+  ],
+  skills: [
+    {
+      skill: ''
+    }
+  ],
+  languages: [
+    {
+      language: ''
     }
   ]
 }

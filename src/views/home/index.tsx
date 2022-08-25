@@ -4,7 +4,9 @@ import { useTranslation } from 'next-i18next'
 
 import { AiOutlineFileText, AiOutlineDownload } from 'react-icons/ai'
 
-import { TemplateOne } from 'components/layouts/resume-templates'
+import { useResume, FieldValues } from 'hooks'
+
+import { TemplateOne } from 'components/templates/resume'
 import {
   Fieldset,
   RichText,
@@ -26,103 +28,19 @@ import {
   DEFAULT_DATA
 } from 'utils/constants'
 
-import type {
-  EducationData,
-  ExperienceData,
-  LanguagesData,
-  LinksData,
-  SkillData
-} from 'types'
-
 import * as S from './styles'
-
-export type FieldValues = {
-  name: string
-  phone: string
-  email: string
-  profession: string
-  summary: string
-  experience: ExperienceData[]
-  education: EducationData[]
-  links: LinksData[]
-  skills: SkillData[]
-  languages: LanguagesData[]
-}
 
 export const HomeView = () => {
   const pdfRef = useRef(null)
   const { t } = useTranslation('common')
+  const { data, isModified, handleInput } = useResume()
 
   const [isClient, setIsClient] = useState<boolean>(false)
   const [dialogIsOpen, setDialogIsOpen] = useState<boolean>(false)
-  const [hadModification, setHadModification] = useState<boolean>(false)
-  const [values, setValues] = useState<FieldValues>({
-    name: '',
-    phone: '',
-    email: '',
-    profession: '',
-    summary: '',
-    experience: [
-      {
-        employer: '',
-        role: '',
-        duration: '',
-        description: ''
-      }
-    ],
-    education: [
-      {
-        institution: '',
-        program: '',
-        duration: ''
-      }
-    ],
-    links: [
-      {
-        service: '',
-        username: ''
-      }
-    ],
-    skills: [
-      {
-        skill: ''
-      }
-    ],
-    languages: [
-      {
-        language: ''
-      }
-    ]
-  })
 
   useEffect(() => {
     setIsClient(true)
-
-    const localValues = localStorage.getItem('values')
-    const localNumberModifications = localStorage.getItem('modifications')
-
-    if (localValues) {
-      setValues(JSON.parse(localValues))
-    }
-
-    if (localNumberModifications) {
-      setHadModification(JSON.parse(localNumberModifications))
-    }
   }, [])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      localStorage.setItem('values', JSON.stringify(values))
-      localStorage.setItem('modifications', JSON.stringify(hadModification))
-    }, 3000)
-
-    return () => clearTimeout(timer)
-  }, [values])
-
-  const handleInput = (field: keyof FieldValues, value: unknown) => {
-    setValues((state) => ({ ...state, [field]: value }))
-    setHadModification(true)
-  }
 
   const handlePrint = useReactToPrint({
     content: () => pdfRef?.current
@@ -141,7 +59,7 @@ export const HomeView = () => {
                 >
                   <TextField
                     {...input}
-                    initialValue={values[input.name]}
+                    initialValue={data[input.name]}
                     onInputChange={(value) =>
                       handleInput(input.name as keyof FieldValues, value)
                     }
@@ -153,7 +71,7 @@ export const HomeView = () => {
 
           <Fieldset legend={t('professional-summary')}>
             <RichText
-              initialValue={values.summary !== '' ? values.summary : ''}
+              initialValue={data.summary !== '' ? data.summary : ''}
               onRichTextChange={(value) => handleInput('summary', value)}
             />
           </Fieldset>
@@ -161,7 +79,7 @@ export const HomeView = () => {
           <Fieldset legend={t('work-history')}>
             <CollapseInput
               collapseHeader={t('your-role')}
-              data={values?.experience}
+              data={data?.experience}
               inputs={WORK_INPUTS()}
               onChange={(value) => handleInput('experience', value)}
             />
@@ -170,7 +88,7 @@ export const HomeView = () => {
           <Fieldset legend={t('education')}>
             <CollapseInput
               collapseHeader={t('your-education')}
-              data={values?.education}
+              data={data?.education}
               inputs={EDUCATION_INPUTS()}
               onChange={(value) => handleInput('education', value)}
             />
@@ -178,7 +96,7 @@ export const HomeView = () => {
 
           <Fieldset legend={t('skills')}>
             <CompoundInput
-              data={values?.skills}
+              data={data?.skills}
               onChange={(value) => handleInput('skills', value)}
               inputs={SKILLS_INPUTS()}
             />
@@ -186,7 +104,7 @@ export const HomeView = () => {
 
           <Fieldset legend={t('social-links')}>
             <CompoundInput
-              data={values?.links}
+              data={data?.links}
               onChange={(value) => handleInput('links', value)}
               inputs={LINKS_INPUTS()}
               options={LINKS_SELECT}
@@ -195,7 +113,7 @@ export const HomeView = () => {
 
           <Fieldset legend={t('languages')}>
             <CompoundInput
-              data={values?.languages}
+              data={data?.languages}
               onChange={(value) => handleInput('languages', value)}
               inputs={LANGUAGES_INPUTS()}
               options={LANGUAGES_SELECT()}
@@ -208,7 +126,7 @@ export const HomeView = () => {
           <S.PDFContainer>
             <S.Document>
               <TemplateOne
-                data={hadModification ? values : DEFAULT_DATA}
+                data={isModified ? data : DEFAULT_DATA}
                 ref={pdfRef}
               />
             </S.Document>
@@ -231,6 +149,7 @@ export const HomeView = () => {
       <Dialog
         isOpen={dialogIsOpen}
         handleChangeStatus={() => setDialogIsOpen(!dialogIsOpen)}
+        title={t('select-template')}
       >
         .
       </Dialog>
