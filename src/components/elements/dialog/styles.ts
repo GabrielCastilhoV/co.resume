@@ -18,6 +18,7 @@ export const DialogContainer = styled.div`
   height: 100%;
   position: relative;
   padding: 20px;
+  overflow: auto;
 
   background: ${({ theme }) => theme.colors.gray100};
   border-radius: 6px;
@@ -32,9 +33,19 @@ export const DialogContainer = styled.div`
   }
 `
 
-export const Content = styled.div``
+export const Content = styled.div`
+  margin-top: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+  }
+`
 
 export const Title = styled.h1`
   text-align: center;
-  ${({ theme }) => theme.font.sizes.huge};
+  font-size: ${({ theme }) => theme.font.sizes.md};
+
+  @media screen and (min-width: 768px) {
+    font-size: ${({ theme }) => theme.font.sizes.lg};
+  }
 `

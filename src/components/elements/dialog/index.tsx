@@ -37,6 +37,7 @@ export const Dialog = ({
       open={isOpen}
       aria-labelledby="dialog-title"
       aria-describedby="dialog-description"
+      aria-hidden={!isOpen}
     >
       <S.DialogContainer>
         <AiOutlineClose role="button" onClick={handleChangeStatus} />

@@ -6,14 +6,15 @@ import { AiOutlineFileText, AiOutlineDownload } from 'react-icons/ai'
 
 import { useResume, FieldValues } from 'hooks'
 
-import { TemplateOne } from 'components/templates/resume'
 import {
   Fieldset,
   RichText,
   TextField,
   CollapseInput,
   CompoundInput,
-  Dialog
+  Dialog,
+  TemplateList,
+  ActiveTemplate
 } from 'components/elements'
 
 import {
@@ -125,7 +126,7 @@ export const HomeView = () => {
         {isClient && (
           <S.PDFContainer>
             <S.Document>
-              <TemplateOne
+              <ActiveTemplate
                 data={isModified ? data : DEFAULT_DATA}
                 ref={pdfRef}
               />
@@ -151,7 +152,11 @@ export const HomeView = () => {
         handleChangeStatus={() => setDialogIsOpen(!dialogIsOpen)}
         title={t('select-template')}
       >
-        .
+        <TemplateList
+          ref={pdfRef}
+          data={isModified ? data : DEFAULT_DATA}
+          onCloseModal={() => setDialogIsOpen(!dialogIsOpen)}
+        />
       </Dialog>
     </>
   )

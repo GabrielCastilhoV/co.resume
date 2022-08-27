@@ -25,8 +25,8 @@ export type FieldValues = {
 
 export type ResumeContextData = {
   data: FieldValues
-  handleInput: (field: keyof FieldValues, value: unknown) => void
   isModified: boolean
+  handleInput: (field: keyof FieldValues, value: unknown) => void
 }
 
 export type ResumeProviderProps = {
@@ -44,9 +44,7 @@ export const ResumeContext = createContext<ResumeContextData>(
 )
 
 const ResumeProvider = ({ children }: ResumeProviderProps) => {
-  const [values, setValues] = useState<ResumeContextData>(
-    ResumeContextDataDefaultValues
-  )
+  const [values, setValues] = useState<FieldValues>(DEFAULT_DATA_EMPTY)
   const [hadModification, setHadModification] = useState<boolean>(false)
 
   useEffect(() => {
@@ -54,7 +52,8 @@ const ResumeProvider = ({ children }: ResumeProviderProps) => {
     const localNumberModifications = localStorage.getItem('modifications')
 
     if (localValues) setValues(JSON.parse(localValues))
-    if (localNumberModifications) setHadModification(true)
+    if (localNumberModifications)
+      setHadModification(JSON.parse(localNumberModifications))
   }, [])
 
   useEffect(() => {
@@ -69,10 +68,7 @@ const ResumeProvider = ({ children }: ResumeProviderProps) => {
   const handleInput = (field: keyof FieldValues, value: unknown) => {
     setValues((state) => ({
       ...state,
-      data: {
-        ...state.data,
-        [field]: value
-      }
+      [field]: value
     }))
 
     setHadModification(true)
@@ -80,7 +76,11 @@ const ResumeProvider = ({ children }: ResumeProviderProps) => {
 
   return (
     <ResumeContext.Provider
-      value={{ data: values.data, handleInput, isModified: hadModification }}
+      value={{
+        data: values,
+        handleInput,
+        isModified: hadModification
+      }}
     >
       {children}
     </ResumeContext.Provider>
