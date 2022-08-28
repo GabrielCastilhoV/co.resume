@@ -1,4 +1,6 @@
-import { TemplateOne } from 'components/templates/resume'
+import { useTranslation } from 'next-i18next'
+
+import { TemplateOne, TemplateTwo } from 'components/templates/resume'
 import type { FieldValues } from 'hooks'
 
 type TemplateProps = {
@@ -7,29 +9,19 @@ type TemplateProps = {
 }
 
 export const ALL_TEMPLATES = ({ data, ref }: TemplateProps) => {
+  const { t } = useTranslation('common')
+
   return [
     {
       id: '1',
-      name: 'Basic Template',
+      name: 'Paris',
       layout: <TemplateOne data={data} ref={ref} />
     },
 
     {
       id: '2',
-      name: 'Basic Template',
-      layout: <TemplateOne data={data} ref={ref} />
-    },
-
-    {
-      id: '3',
-      name: 'Basic Template',
-      layout: <TemplateOne data={data} ref={ref} />
-    },
-
-    {
-      id: '4',
-      name: 'Basic Template',
-      layout: <TemplateOne data={data} ref={ref} />
+      name: t('berlin'),
+      layout: <TemplateTwo data={data} ref={ref} />
     }
   ]
 }

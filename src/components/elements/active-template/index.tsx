@@ -13,7 +13,7 @@ type TemplateProps = {
 
 export const ActiveTemplate: React.FC<TemplateProps> = forwardRef(
   (props, ref) => {
-    const templateId = localStorage.getItem('templateId')
+    const templateId = localStorage.getItem('templateId') || '1'
 
     const activeTemplate = ALL_TEMPLATES({ data: props.data, ref }).find(
       (template) => template.id === templateId
