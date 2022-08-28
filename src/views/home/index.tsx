@@ -153,7 +153,6 @@ export const HomeView = () => {
         title={t('select-template')}
       >
         <TemplateList
-          ref={pdfRef}
           data={isModified ? data : DEFAULT_DATA}
           onCloseModal={() => setDialogIsOpen(!dialogIsOpen)}
         />
