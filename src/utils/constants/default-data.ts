@@ -1,4 +1,4 @@
-import { FieldValues } from 'views'
+import { FieldValues } from 'hooks'
 
 export const DEFAULT_DATA: FieldValues = {
   name: 'Your name',
@@ -39,12 +39,59 @@ export const DEFAULT_DATA: FieldValues = {
       duration: 'April 2018 - Present',
       description:
         "I implemented the game mechanics in the Unity 3D graphics engine; <br /> I programmed the artificial intelligence of the game's enemies; <br /> Import different types of files such as audio, textures and 3D objects into the game. <br /> I collaborated with designers and artists."
+    },
+
+    {
+      role: 'Developer',
+      employer: 'IBM',
+      duration: 'April 2018 - Present',
+      description:
+        "I implemented the game mechanics in the Unity 3D graphics engine; <br /> I programmed the artificial intelligence of the game's enemies; <br /> Import different types of files such as audio, textures and 3D objects into the game. <br /> I collaborated with designers and artists."
     }
   ],
   links: [
     {
       service: 'linkedin',
       username: 'gabrielcastilhov'
+    }
+  ]
+}
+
+export const DEFAULT_DATA_EMPTY: FieldValues = {
+  name: '',
+  phone: '',
+  email: '',
+  profession: '',
+  summary: '',
+  experience: [
+    {
+      employer: '',
+      role: '',
+      duration: '',
+      description: ''
+    }
+  ],
+  education: [
+    {
+      institution: '',
+      program: '',
+      duration: ''
+    }
+  ],
+  links: [
+    {
+      service: '',
+      username: ''
+    }
+  ],
+  skills: [
+    {
+      skill: ''
+    }
+  ],
+  languages: [
+    {
+      language: ''
     }
   ]
 }

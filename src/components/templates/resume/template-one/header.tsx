@@ -7,12 +7,12 @@ type HeaderProps = {
 }
 
 export const Header = ({ name, role, summary }: HeaderProps) => (
-  <div>
+  <>
     <Title>{name}</Title>
     <Role>{role}</Role>
 
     <Summary dangerouslySetInnerHTML={{ __html: summary }} />
-  </div>
+  </>
 )
 
 const Title = styled.p`

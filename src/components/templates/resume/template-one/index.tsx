@@ -11,7 +11,7 @@ import { Languages } from './languages'
 import { Skills } from './skills'
 import { Title } from './title'
 
-import type { FieldValues } from 'views/home'
+import type { FieldValues } from 'hooks'
 
 type FirstTemplateProps = {
   ref: React.Ref<HTMLDivElement>
@@ -60,8 +60,7 @@ export const TemplateOne: React.FC<FirstTemplateProps> = forwardRef(
 const Page = styled.div`
   width: 100%;
   height: 100%;
-
-  font-family: Inter;
+  background: #fff;
 
   display: flex;
   flex: 1;
@@ -81,4 +80,6 @@ const SideBar = styled.div`
   height: 100%;
   padding: 15px;
   background-color: #fcfcff;
+
+  border-radius: 6px;
 `

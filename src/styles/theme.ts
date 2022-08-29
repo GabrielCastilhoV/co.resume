@@ -22,6 +22,7 @@ export default {
     dark: '#000',
     white: '#fff',
     red: '#d73a49',
+    shape: 'rgb(94, 99, 112)',
     gray400: '#333333',
     gray300: '#3B4D61',
     gray200: '#6B7B8C',
