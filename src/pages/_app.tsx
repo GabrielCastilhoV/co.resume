@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import { appWithTranslation } from 'next-i18next'
 import { ThemeProvider } from 'styled-components'
 
-import { ResumeProvider } from 'hooks'
+import { LanguageProvider, ResumeProvider } from 'hooks'
 
 import { DefaultSeo } from 'next-seo'
 import { defaultConfig } from '../../next-seo.config'
@@ -17,14 +17,16 @@ import 'antd/dist/antd.css'
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <ResumeProvider>
-        <DefaultSeo {...defaultConfig} />
-        <GlobalStyles />
+      <LanguageProvider>
+        <ResumeProvider>
+          <DefaultSeo {...defaultConfig} />
+          <GlobalStyles />
 
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
-      </ResumeProvider>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </ResumeProvider>
+      </LanguageProvider>
     </ThemeProvider>
   )
 }
