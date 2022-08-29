@@ -4,21 +4,17 @@ type TitleProps = {
   title: string
 }
 
-export const Title = ({ title }: TitleProps) => (
-  <Container>
-    <p>{title}</p>
-  </Container>
-)
+export const Title = ({ title }: TitleProps) => <Container>{title}</Container>
 
-const Container = styled.div`
+const Container = styled.p`
   display: flex;
   flex-direction: row;
 
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   color: #376ffe;
 
   border-bottom: 1px solid #d3e4fb;
   padding-bottom: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `

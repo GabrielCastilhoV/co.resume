@@ -29,6 +29,6 @@ const Item = styled.div`
 `
 
 const Text = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   color: #3a3a3a;
 `

@@ -41,7 +41,8 @@ const Wrapper = styled.div`
 const Role = styled.p`
   color: #323232;
   font-weight: bold;
-  margin-bottom: 2px;
+  font-size: 18px;
+  margin-bottom: 5px;
 `
 
 const Employer = styled.p`
@@ -50,5 +51,7 @@ const Employer = styled.p`
 `
 
 const Description = styled.p`
-  color: #706f6f;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3a3a3a;
 `

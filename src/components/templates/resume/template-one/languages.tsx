@@ -44,7 +44,7 @@ const Item = styled.div`
 `
 
 const WrapperCircle = styled.div`
-  margin-top: 5px;
+  margin-top: 8px;
 
   display: flex;
   flex-direction: row;

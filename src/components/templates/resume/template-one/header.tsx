@@ -28,7 +28,8 @@ export const Role = styled.p`
 `
 
 const Summary = styled.div`
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 20px;
   color: #3a3a3a;
   margin-top: 10px;
 `
