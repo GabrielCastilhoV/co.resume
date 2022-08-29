@@ -35,7 +35,7 @@ export const Experience = ({ data }: ExperienceProps) => {
 }
 
 const Wrapper = styled.div`
-  margin-top: 15px;
+  margin-bottom: 15px;
 `
 
 const Role = styled.p`

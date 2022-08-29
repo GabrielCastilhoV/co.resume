@@ -61,6 +61,7 @@ const Page = styled.div`
   width: 100%;
   height: 100%;
   background: #fff;
+
   padding: 40px;
 
   font-family: 'Montserrat';

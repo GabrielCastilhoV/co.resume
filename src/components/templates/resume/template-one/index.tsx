@@ -62,8 +62,6 @@ const Page = styled.div`
   height: 100%;
   background: #fff;
 
-  font-family: Inter;
-
   display: flex;
   flex: 1;
 `
@@ -82,4 +80,6 @@ const SideBar = styled.div`
   height: 100%;
   padding: 15px;
   background-color: #fcfcff;
+
+  border-radius: 6px;
 `

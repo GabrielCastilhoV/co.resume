@@ -1,20 +1,23 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.main`
-  height: calc(100vh - 90px);
-  margin-top: 16px;
-  padding: 0 24px 16px;
-
   display: grid;
+  height: 100vh;
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
 `
 
+export const Content = styled.div``
+
 export const Form = styled.form`
+  height: calc(100vh - 114px);
   overflow-y: auto;
-  padding-right: 16px;
+
+  padding: 0 24px 24px;
+  margin-top: 24px;
+  margin-right: 5px;
 
   ::-webkit-scrollbar {
     width: 10px;
@@ -45,23 +48,29 @@ export const InputContainer = styled.div`
 
 export const PDFContainer = styled.div`
   width: 100%;
-  margin-left: 8px;
-  padding: 0;
+  height: 100%;
+  padding-top: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background-color: ${({ theme }) => theme.colors.shape};
+`
+
+export const Preview = styled.div`
+  width: 70%;
+  height: calc(100vh - 120px);
+
+  overflow: auto;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 6px;
 `
 
 export const Document = styled.div`
-  width: 100%;
-  max-width: 90%;
   height: 100%;
-
-  border-radius: 6px;
-  padding: 1px;
-  border: 1px solid #ccc;
+  zoom: 0.8;
 `
 
 export const Footer = styled.div`

@@ -4,8 +4,6 @@ import { forwardRef } from 'react'
 import { FieldValues } from 'hooks'
 import { ALL_TEMPLATES } from 'utils/constants'
 
-import * as S from './styles'
-
 type TemplateProps = {
   ref: React.Ref<HTMLDivElement>
   data: FieldValues
@@ -19,6 +17,6 @@ export const ActiveTemplate: React.FC<TemplateProps> = forwardRef(
       (template) => template.id === templateId
     )
 
-    return <S.Wrapper>{activeTemplate?.layout}</S.Wrapper>
+    return <>{activeTemplate?.layout}</>
   }
 )
