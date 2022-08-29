@@ -17,18 +17,22 @@ export const Template = styled.div`
 
 export const TemplateName = styled.h3`
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 export const TemplatePreview = styled.div`
-  height: 800px;
+  height: 1200px;
   border: 1px solid ${({ theme }) => theme.colors.gray150};
 
   cursor: pointer;
   user-select: none;
-  zoom: 0.5;
+  zoom: 0.3;
+
+  transition: scale 0.3s ease-in-out;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.dark};
+
+    scale: 1.05;
   }
 `
