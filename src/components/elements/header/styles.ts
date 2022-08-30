@@ -33,11 +33,6 @@ export const LanguageContainer = styled.div`
 
   cursor: pointer;
   position: relative;
-  transition: filter 0.2s ease-in-out;
-
-  &:hover {
-    filter: brightness(0.9);
-  }
 `
 
 export const ActiveLanguage = styled.div`
