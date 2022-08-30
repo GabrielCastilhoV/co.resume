@@ -105,6 +105,7 @@ export const Footer = styled.div`
 
     outline: none;
     cursor: pointer;
+    transition: filter 0.2s ease-in-out;
     background: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.white};
     font-weight: ${({ theme }) => theme.font.weights.bold};

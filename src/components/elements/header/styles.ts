@@ -33,6 +33,11 @@ export const LanguageContainer = styled.div`
 
   cursor: pointer;
   position: relative;
+  transition: filter 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 `
 
 export const ActiveLanguage = styled.div`
@@ -85,5 +90,24 @@ export const LanguageItem = styled.li`
 
   &:hover {
     background: ${({ theme }) => theme.colors.grey150};
+  }
+`
+
+export const Right = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: ${({ theme }) => theme.colors.grey400};
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      fill: ${({ theme }) => theme.colors.green};
+    }
   }
 `
