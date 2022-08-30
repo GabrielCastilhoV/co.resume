@@ -22,7 +22,7 @@ export const TemplateName = styled.h3`
 
 export const TemplatePreview = styled.div`
   height: 1200px;
-  border: 1px solid ${({ theme }) => theme.colors.gray150};
+  border: 1px solid transparent;
 
   cursor: pointer;
   user-select: none;
@@ -31,8 +31,6 @@ export const TemplatePreview = styled.div`
   transition: scale 0.3s ease-in-out;
 
   &:hover {
-    border: 1px solid ${({ theme }) => theme.colors.dark};
-
-    scale: 1.05;
+    scale: 1.03;
   }
 `

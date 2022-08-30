@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.colors.white};
+  border-radius: 6px;
 `
 
 export const Label = styled.label`
@@ -18,12 +19,11 @@ export const InputWrapper = styled.div`
   align-items: center;
   padding: 0 8px;
 
-  border-radius: 5px;
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid ${({ theme }) => theme.colors.gray100};
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.colors.grey150};
 
   &:focus-within {
-    border: 1px solid ${({ theme }) => theme.colors.gray300};
+    border: 1px solid ${({ theme }) => theme.colors.grey200};
   }
 `
 
@@ -33,10 +33,9 @@ export const Input = styled.input`
   margin-left: 8px;
 
   background: transparent;
-  opacity: 0.8;
   border: 0;
   outline: 0;
 
   font-size: ${({ theme }) => theme.font.sizes.xs};
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.grey400};
 `

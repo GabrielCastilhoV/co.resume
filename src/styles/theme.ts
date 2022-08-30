@@ -21,14 +21,13 @@ export default {
   colors: {
     dark: '#000',
     white: '#fff',
-    red: '#d73a49',
-    shape: 'rgb(94, 99, 112)',
-    gray400: '#333333',
-    gray300: '#3B4D61',
-    gray200: '#6B7B8C',
-    gray150: '#CCCCCC',
-    gray100: '#D9DBDF',
-    gray50: '#F9FAFB'
+    green: '#00CD98',
+    grey400: '#0A132A',
+    grey200: '#747886',
+    grey150: '#D9DBDF',
+    grey100: '#E3E7EE',
+    grey75: '#EFF2F5',
+    grey50: '#F9FAFB'
   },
   transition: {
     default: '0.3s ease-in-out',

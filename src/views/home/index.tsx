@@ -60,7 +60,7 @@ export const HomeView = () => {
                 {PERSONAL_INFORMATION_INPUTS()?.map((input, index) => (
                   <S.InputContainer
                     key={index}
-                    style={{ width: index < 2 ? 'calc(50% - 8px)' : '100%' }}
+                    customWidth={index < 2 ? 'calc(50% - 8px)' : '100%'}
                   >
                     <TextField
                       {...input}
@@ -141,13 +141,13 @@ export const HomeView = () => {
 
             <S.Footer>
               <button onClick={() => setDialogIsOpen(!dialogIsOpen)}>
-                {t('change-template')}
                 <AiOutlineFileText />
+                {t('change-template')}
               </button>
 
               <button onClick={handlePrint}>
-                {t('print-out')}
                 <AiOutlineDownload />
+                {t('download')}
               </button>
             </S.Footer>
           </S.PDFContainer>

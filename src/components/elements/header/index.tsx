@@ -3,8 +3,9 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import * as S from './styles'
 import { useLanguage } from 'hooks'
+
+import * as S from './styles'
 
 export const Header = () => {
   const { activeLanguage, languages, handleChangeLanguage, pathname } =
@@ -16,16 +17,19 @@ export const Header = () => {
     <S.Wrapper>
       <Link href="/">
         <S.LogoContainer>
-          <Image src="/icons/logo.svg" width={24} height={24} alt="copy icon" />
-
-          <S.LogoName>CO. RESUME</S.LogoName>
+          <Image
+            src="/icons/logo.svg"
+            width={180}
+            height={30}
+            alt="Logo with a copy icon and a text written CO.RESUME"
+          />
         </S.LogoContainer>
       </Link>
 
       <S.LanguageContainer onClick={() => setIsOpen(!isOpen)}>
         <S.ActiveLanguage>
           <Image
-            src={activeLanguage?.image}
+            src="/icons/languages.svg"
             width={20}
             height={20}
             alt={activeLanguage?.code}

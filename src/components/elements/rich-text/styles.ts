@@ -6,18 +6,18 @@ export const Wrapper = styled.div`
   width: 100%;
 
   border-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.gray100};
+  border: 1px solid ${({ theme }) => theme.colors.grey150};
 
   &:focus-within {
-    border: 1px solid ${({ theme }) => theme.colors.gray300};
+    border: 1px solid ${({ theme }) => theme.colors.grey200};
   }
 `
 
 export const Toolbar = styled.div`
   padding: 8px;
-  background: ${({ theme }) => theme.colors.gray50};
+  background: ${({ theme }) => theme.colors.grey50};
 
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray100};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey150};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 
@@ -38,17 +38,20 @@ export const Button = styled.button<{ isActive: boolean }>`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gray100};
+    background: ${({ theme }) => theme.colors.grey150};
   }
 
   ${({ isActive }) =>
     isActive &&
     css`
-      background: ${({ theme }) => theme.colors.gray100};
+      background: ${({ theme }) => theme.colors.grey150};
     `}
 `
 
 export const Editor = styled(EditorContent)`
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: 5px;
+
   .ProseMirror {
     min-height: 100px;
     padding: 8px;

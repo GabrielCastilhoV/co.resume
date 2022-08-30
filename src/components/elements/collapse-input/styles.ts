@@ -33,7 +33,7 @@ export const CollapseButton = styled.button`
   border: 1px solid transparent;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gray100};
+    background: ${({ theme }) => theme.colors.grey100};
     cursor: pointer;
   }
 
@@ -42,7 +42,7 @@ export const CollapseButton = styled.button`
     cursor: not-allowed;
 
     svg {
-      color: ${({ theme }) => theme.colors.gray100};
+      color: ${({ theme }) => theme.colors.grey100};
     }
   }
 `

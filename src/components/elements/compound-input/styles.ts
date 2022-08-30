@@ -8,9 +8,14 @@ export const Item = styled.div<{ inverted: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   gap: 8px;
   margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 
   ${({ inverted }) =>
     inverted &&
@@ -41,7 +46,7 @@ export const CollapseButton = styled.button`
   grid-area: 'icon';
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gray100};
+    background: ${({ theme }) => theme.colors.grey150};
     cursor: pointer;
   }
 `

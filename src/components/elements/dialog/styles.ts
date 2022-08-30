@@ -5,10 +5,11 @@ export const Wrapper = styled.dialog`
   height: 100%;
   padding: 20px;
 
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   border: none;
 
   position: fixed;
+  z-index: 10;
   inset: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -20,7 +21,7 @@ export const DialogContainer = styled.div`
   padding: 20px;
   overflow: auto;
 
-  background: ${({ theme }) => theme.colors.gray100};
+  background: ${({ theme }) => theme.colors.grey100};
   border-radius: 6px;
 
   > svg {

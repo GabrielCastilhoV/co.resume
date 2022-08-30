@@ -50,10 +50,12 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="shortcut icon" href="./icons/logo.svg" type="image/svg" />
+          <link
+            rel="shortcut icon"
+            href="./icons/favicon.svg"
+            type="image/svg"
+          />
         </Head>
-
-        <title>CO. RESUME</title>
 
         <body>
           <Main />

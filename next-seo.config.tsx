@@ -1,7 +1,7 @@
 import { DefaultSeoProps } from 'next-seo'
 
 export const defaultConfig: DefaultSeoProps = {
-  title: 'CO. Resume',
+  title: 'CO.RESUME',
   description:
     'CO. Resume é um construtor de currículo gratuito que ajuda você a criar um currículo bonito e profissional em minutos.',
   canonical: 'https://co-resume.vercel.app',
@@ -10,7 +10,7 @@ export const defaultConfig: DefaultSeoProps = {
     locale: 'pt_BR',
     url: 'https://co-resume.vercel.app',
     site_name: 'CO. Resume',
-    title: 'CO. Resume',
+    title: 'CO.RESUME',
     images: [
       {
         url: 'https://res.cloudinary.com/dnhzgetr2/image/upload/v1661097750/banner_sdv3oh.png',

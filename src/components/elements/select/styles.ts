@@ -5,13 +5,13 @@ export const Wrapper = styled.select`
   height: 48px;
   padding: 0 16px;
 
-  color: ${({ theme }) => theme.colors.gray400};
+  color: ${({ theme }) => theme.colors.grey400};
 
-  border-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.gray100};
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.grey150};
   outline: none;
 
   &:focus-within {
-    border: 1px solid ${({ theme }) => theme.colors.gray300};
+    border: 1px solid ${({ theme }) => theme.colors.grey200};
   }
 `

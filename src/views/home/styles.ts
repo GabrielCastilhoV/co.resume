@@ -9,39 +9,46 @@ export const Wrapper = styled.main`
   }
 `
 
-export const Content = styled.div``
+export const Content = styled.div`
+  background: ${({ theme }) => theme.colors.grey50};
+  position: relative;
+  z-index: 2;
+
+  box-shadow: 45px 0px 45px rgba(33, 37, 51, 0.08),
+    11px 0px 25px rgba(33, 37, 51, 0.06), 0px 0px 0px rgba(33, 37, 51, 0.06);
+`
 
 export const Form = styled.form`
-  height: calc(100vh - 114px);
+  height: calc(100vh - 136px);
   overflow-y: auto;
 
   padding: 0 24px 24px;
-  margin-top: 24px;
-  margin-right: 5px;
+  margin: 24px 5px 16px 0;
 
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.gray100};
+    background: #cfd2d7;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.gray200};
+    background: #747886;
     border-radius: 10px;
   }
 `
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<{ customWidth?: string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 16px;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
+    width: ${(props) => props.customWidth || '100%'};
     flex-direction: row;
   }
 `
@@ -56,21 +63,29 @@ export const PDFContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.shape};
+  background-color: ${({ theme }) => theme.colors.grey100};
 `
 
 export const Preview = styled.div`
-  width: 70%;
+  width: 90%;
   height: calc(100vh - 120px);
 
   overflow: auto;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
+
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
 `
 
 export const Document = styled.div`
   height: 100%;
-  zoom: 0.8;
+  zoom: 0.6;
+
+  @media screen and (min-width: 768px) {
+    zoom: 0.8;
+  }
 `
 
 export const Footer = styled.div`
@@ -84,26 +99,27 @@ export const Footer = styled.div`
   padding: 16px;
 
   button {
-    border: 1px solid ${({ theme }) => theme.colors.gray200};
-    border-radius: 6px;
-    padding: 8px 16px;
+    border: 0;
+    border-radius: 16px;
+    padding: 14px 22px;
 
     outline: none;
     cursor: pointer;
-    background: ${({ theme }) => theme.colors.gray300};
+    background: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.white};
+    font-weight: ${({ theme }) => theme.font.weights.bold};
 
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
 
     &:hover {
-      filter: brightness(1.2);
+      filter: brightness(0.9);
     }
   }
 `
