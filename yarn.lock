@@ -1383,10 +1383,10 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-bold/-/extension-bold-2.0.0-beta.28.tgz#cf67c264a80434ffb2368f3dd37cf357ae0c2064"
   integrity sha512-DY8GOzw9xjmTFrnvTbgHUNxTnDfKrkDgrhe0SUvdkT2udntWp8umPdhPiD3vczLgHOJw6tX68qMRjbsR1ZPcHQ==
 
-"@tiptap/extension-bubble-menu@^2.0.0-beta.61":
-  version "2.0.0-beta.61"
-  resolved "https://registry.yarnpkg.com/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.0.0-beta.61.tgz#cc61ce8b094fdbcec58f44f0fa39172a726c024c"
-  integrity sha512-T3Yx+y1sUnXAJjK1CUfsQewSxOpDca9KzKqN2H9c9RZ9UlorR9XmZg6YYW7m9a7adeihj+o3cCO9jRd8dV+nnA==
+"@tiptap/extension-bubble-menu@^2.0.0-beta.62":
+  version "2.0.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.0.0-beta.62.tgz#c1381a80dc61ba10db8ae62aed034a481b9e157b"
+  integrity sha512-kULfrsizAo5siu77bkr8ftzIIzRsywtizubFfjD9dlR4PPBQb4QN/tN2kIjOQXvWgYPKSLoBKC5E3El4mV7sJQ==
   dependencies:
     prosemirror-state "1.4.1"
     prosemirror-view "1.26.2"
@@ -1491,12 +1491,12 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-text/-/extension-text-2.0.0-beta.17.tgz#4fdd1bdf62c82c1af6feef91c689906a8f5b171e"
   integrity sha512-OyKL+pqWJEtjyd9/mrsuY1kZh2b3LWpOQDWKtd4aWR4EA0efmQG+7FPwcIeAVEh7ZoqM+/ABCnPjN6IjzIrSfg==
 
-"@tiptap/react@^2.0.0-beta.114":
-  version "2.0.0-beta.114"
-  resolved "https://registry.yarnpkg.com/@tiptap/react/-/react-2.0.0-beta.114.tgz#fa2b3fcdf379bf7ee25388c0eddbda49249977d5"
-  integrity sha512-9JbRE+16WM6RxbBxzY74SrJtLodvjeRBnEbWxuhxVgGKxMunRj6r8oED87ODJgqLmkpofwE0KFHTPGdEXfdcKA==
+"@tiptap/react@^2.0.0-beta.115":
+  version "2.0.0-beta.115"
+  resolved "https://registry.yarnpkg.com/@tiptap/react/-/react-2.0.0-beta.115.tgz#78108bf90399e0004afdc94d02ae65e3621ff645"
+  integrity sha512-x8gV0frE8iz63qHCxkQsI2HglNwIvsi6ydASlazIEHGY87q5qT4XWE3yU0HlRmCjJ3OxsuykxWQ0w04P3XBaLw==
   dependencies:
-    "@tiptap/extension-bubble-menu" "^2.0.0-beta.61"
+    "@tiptap/extension-bubble-menu" "^2.0.0-beta.62"
     "@tiptap/extension-floating-menu" "^2.0.0-beta.56"
     prosemirror-view "1.26.2"
 
