@@ -1421,10 +1421,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@tiptap/core@^2.0.0-beta.182":
-  version "2.0.0-beta.182"
-  resolved "https://registry.yarnpkg.com/@tiptap/core/-/core-2.0.0-beta.182.tgz#d2001e9b765adda95e15d171479860a3349e2d04"
-  integrity sha512-MZGkMGnVnWhBzjvpBNwQ9zBz38ndi3Irbf90uCTSArR0kaCVkW4vmyuPuOXd+0SO8Yv/l5oyDdOCpaG3rnQYfw==
+"@tiptap/core@^2.0.0-beta.183":
+  version "2.0.0-beta.183"
+  resolved "https://registry.yarnpkg.com/@tiptap/core/-/core-2.0.0-beta.183.tgz#b154485378eec59ccb7a2bdf3ea2ba181d74e7c7"
+  integrity sha512-lbGgIpAVxqcC4mhdA3qdUC1lOpV4N/9FtAk3ZQkN+iwuRx554VZeJeazWMuEXpNE/b4AdYTjX5TG3dxg37ES4A==
   dependencies:
     prosemirror-commands "1.3.0"
     prosemirror-keymap "1.2.0"
@@ -1465,10 +1465,10 @@
   dependencies:
     prosemirror-state "1.4.1"
 
-"@tiptap/extension-code@^2.0.0-beta.28":
-  version "2.0.0-beta.28"
-  resolved "https://registry.yarnpkg.com/@tiptap/extension-code/-/extension-code-2.0.0-beta.28.tgz#a22c0e873497ac0bbcd77e4a855322f8591f954e"
-  integrity sha512-QPJ2Gwb1+3NgcC1ZIhvVcb+FsnWWDu5VZXTKXM4mz892i9V2x48uHg5anPiUV6pcolXsW1F5VNbXIHGTUUO6CQ==
+"@tiptap/extension-code@^2.0.0-beta.29":
+  version "2.0.0-beta.29"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-code/-/extension-code-2.0.0-beta.29.tgz#c067cc8d55b0d6e63a1ea801f1f2fea2b312fa30"
+  integrity sha512-UbdvnbACiSKcewy4T1j4z74tB1j8j8Bh4MzfM1Mv7YelNKNIWLhQTubua63X37JH9dT7fFjAHI3/SpF+SZ5OVg==
 
 "@tiptap/extension-document@^2.0.0-beta.17":
   version "2.0.0-beta.17"
@@ -1561,16 +1561,16 @@
     "@tiptap/extension-floating-menu" "^2.0.0-beta.56"
     prosemirror-view "1.26.2"
 
-"@tiptap/starter-kit@^2.0.0-beta.191":
-  version "2.0.0-beta.191"
-  resolved "https://registry.yarnpkg.com/@tiptap/starter-kit/-/starter-kit-2.0.0-beta.191.tgz#3f549367f6dbb8cf83f63aa0941722d91d0fd8e7"
-  integrity sha512-YRrBCi9W4jiH/xLTJJOCdD7pL4Wb98Ip8qCJ94RElShDj0O1i5tT9wWlgVWoGIU+CRAds5XENRwZ97sJ+YfYyg==
+"@tiptap/starter-kit@^2.0.0-beta.192":
+  version "2.0.0-beta.192"
+  resolved "https://registry.yarnpkg.com/@tiptap/starter-kit/-/starter-kit-2.0.0-beta.192.tgz#6b9a08cc76197f8fd81ed4ad70a9ce16da2ab84c"
+  integrity sha512-NR3bBvCGy8Cea1VL9ZEhw0q5M/9jeBZhqI2/uX1jYo1mfSE3WxhRD1PPhcvJTePauPBQWHfhFbsu0aSIv0O3NA==
   dependencies:
-    "@tiptap/core" "^2.0.0-beta.182"
+    "@tiptap/core" "^2.0.0-beta.183"
     "@tiptap/extension-blockquote" "^2.0.0-beta.29"
     "@tiptap/extension-bold" "^2.0.0-beta.28"
     "@tiptap/extension-bullet-list" "^2.0.0-beta.29"
-    "@tiptap/extension-code" "^2.0.0-beta.28"
+    "@tiptap/extension-code" "^2.0.0-beta.29"
     "@tiptap/extension-code-block" "^2.0.0-beta.42"
     "@tiptap/extension-document" "^2.0.0-beta.17"
     "@tiptap/extension-dropcursor" "^2.0.0-beta.29"
