@@ -9,6 +9,7 @@ export type ExperienceData = {
   role?: string
   duration?: string
   description?: string
+  isOpen?: boolean
 }
 
 export type EducationData = {

@@ -1,16 +1,57 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
+`
 
-  .ant-collapse {
-    border-radius: 5px;
-  }
+export const Collapse = styled.div`
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+`
 
-  .ant-collapse-header-text {
-    font-weight: ${({ theme }) => theme.font.weights.bold};
-    font-size: ${({ theme }) => theme.font.sizes.xs};
-  }
+export const Panel = styled.div`
+  background: #fff;
+  border-radius: 5px;
+`
+
+export const CollapseHeader = styled.div<{ isOpen: boolean }>`
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  cursor: pointer;
+
+  background: #fafafa;
+  border-bottom: 1px solid #dadada;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  ${({ isOpen }) =>
+    !isOpen &&
+    css`
+      border-radius: 5px;
+    `}
+`
+
+export const Role = styled.div`
+  width: 90%;
+  font-weight: ${({ theme }) => theme.font.weights.bold};
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
+export const CollapseContent = styled.div<{ show: boolean }>`
+  padding: 12px 16px;
+  display: block;
+
+  ${({ show }) => !show && 'display: none;'}
 `
 
 export const InputContainer = styled.div`
@@ -31,6 +72,11 @@ export const CollapseButton = styled.button`
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
+
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: 10;
 
   &:hover {
     background: ${({ theme }) => theme.colors.grey100};

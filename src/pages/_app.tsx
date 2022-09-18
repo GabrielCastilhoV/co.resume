@@ -12,8 +12,6 @@ import { AppLayout } from 'components/layouts'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 
-import 'antd/dist/antd.css'
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={theme}>
