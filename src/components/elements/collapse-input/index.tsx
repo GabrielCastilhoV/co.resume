@@ -1,10 +1,14 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'next-i18next'
-import { Collapse } from 'antd'
-import { AiFillDelete, AiOutlinePlus } from 'react-icons/ai'
+
+import {
+  AiFillDelete,
+  AiOutlinePlus,
+  AiOutlineRight,
+  AiOutlineDown
+} from 'react-icons/ai'
 
 import { RichText, TextField } from 'components/elements'
-const { Panel } = Collapse
 
 import type { GenericInput } from 'types'
 
@@ -46,14 +50,26 @@ export const CollapseInput = <T extends unknown>({
     [data]
   )
 
+  const handleChangeCollapse = (index: number) => {
+    onChange(
+      data.map((item: any, i) =>
+        i === index ? { ...item, isOpen: !item?.isOpen } : item
+      )
+    )
+  }
+
   return (
     <S.Wrapper>
-      <Collapse accordion>
+      <S.Collapse>
         {data?.map((item: T | any, index) => (
-          <Panel
-            header={item?.role || collapseHeader}
-            key={index}
-            extra={
+          <S.Panel key={index}>
+            <S.CollapseHeader isOpen={item?.isOpen}>
+              <S.Role onClick={() => handleChangeCollapse(index)}>
+                {item?.isOpen ? <AiOutlineDown /> : <AiOutlineRight />}
+
+                {item?.role || collapseHeader}
+              </S.Role>
+
               <S.CollapseButton
                 type="button"
                 onClick={() => removeItem(index)}
@@ -61,41 +77,43 @@ export const CollapseInput = <T extends unknown>({
               >
                 <AiFillDelete />
               </S.CollapseButton>
-            }
-          >
-            <S.InputContainer>
-              {inputs.map((input, i) =>
-                input.type === 'input' ? (
-                  <div
-                    key={i}
-                    style={{
-                      width: i > 0 ? 'calc(50% - 8px)' : '100%',
-                      display: 'flex',
-                      flexWrap: 'wrap'
-                    }}
-                  >
-                    <TextField
-                      placeholder={input.placeholder}
+            </S.CollapseHeader>
+
+            <S.CollapseContent show={item?.isOpen}>
+              <S.InputContainer>
+                {inputs.map((input, i) =>
+                  input.type === 'input' ? (
+                    <div
+                      key={i}
+                      style={{
+                        width: i > 0 ? 'calc(50% - 8px)' : '100%',
+                        display: 'flex',
+                        flexWrap: 'wrap'
+                      }}
+                    >
+                      <TextField
+                        placeholder={input.placeholder}
+                        initialValue={item[input.name]}
+                        onInputChange={(value) =>
+                          handleInput(input.name, value, index)
+                        }
+                      />
+                    </div>
+                  ) : (
+                    <RichText
+                      key={i}
                       initialValue={item[input.name]}
-                      onInputChange={(value) =>
+                      onRichTextChange={(value) =>
                         handleInput(input.name, value, index)
                       }
                     />
-                  </div>
-                ) : (
-                  <RichText
-                    key={i}
-                    initialValue={item[input.name]}
-                    onRichTextChange={(value) =>
-                      handleInput(input.name, value, index)
-                    }
-                  />
-                )
-              )}
-            </S.InputContainer>
-          </Panel>
+                  )
+                )}
+              </S.InputContainer>
+            </S.CollapseContent>
+          </S.Panel>
         ))}
-      </Collapse>
+      </S.Collapse>
 
       <S.AddButton type="button" onClick={addNewItem}>
         <AiOutlinePlus /> {t('add-new')}

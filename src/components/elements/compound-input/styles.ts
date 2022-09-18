@@ -24,13 +24,6 @@ export const Item = styled.div<{ inverted: boolean }>`
       grid-template-columns: 1.2fr 0.8fr 0.1fr;
       grid-template-areas: 'input select icon';
     `}
-
-  .ant-select-selector {
-    height: 46px !important;
-    align-items: center;
-    border-radius: 5px !important;
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05);
-  }
 `
 
 export const CollapseButton = styled.button`
