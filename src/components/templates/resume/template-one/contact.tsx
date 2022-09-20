@@ -95,6 +95,10 @@ const Item = styled.div`
 
     color: #376ffe;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const Text = styled.p`
