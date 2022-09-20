@@ -17,8 +17,6 @@ export const Panel = styled.div`
 `
 
 export const CollapseHeader = styled.div<{ isOpen: boolean }>`
-  padding: 12px 16px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,6 +38,8 @@ export const CollapseHeader = styled.div<{ isOpen: boolean }>`
 
 export const Role = styled.div`
   width: 90%;
+  padding: 12px 16px;
+
   font-weight: ${({ theme }) => theme.font.weights.bold};
 
   display: flex;
@@ -74,7 +74,8 @@ export const CollapseButton = styled.button`
   border: 1px solid transparent;
 
   position: absolute;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 16px;
   z-index: 10;
 

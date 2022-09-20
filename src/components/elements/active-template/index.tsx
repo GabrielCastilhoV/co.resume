@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 
 import { FieldValues } from 'hooks'
 import { ALL_TEMPLATES } from 'utils/constants'
@@ -17,6 +17,6 @@ export const ActiveTemplate: React.FC<TemplateProps> = forwardRef(
       (template) => template.id === templateId
     )
 
-    return <>{activeTemplate?.layout}</>
+    return <React.Fragment>{activeTemplate?.layout}</React.Fragment>
   }
 )
