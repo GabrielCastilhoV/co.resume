@@ -20,7 +20,8 @@ export const Experience = ({ data }: ExperienceProps) => {
         data?.map((experience, index) => (
           <Wrapper key={index}>
             <Role>
-              {experience.role}, {experience.employer}
+              {experience.role}
+              {experience.employer && ', ' + experience.employer}
             </Role>
 
             <Duration>{experience.duration}</Duration>

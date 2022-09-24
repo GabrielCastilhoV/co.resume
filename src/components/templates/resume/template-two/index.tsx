@@ -69,7 +69,7 @@ const Page = styled.div`
 
 const SideBar = styled.div`
   width: 40%;
-  height: calc(100vh - 220px);
+  height: calc(100vh - 260px);
   border-right: 1px solid #ccc;
 `
 
