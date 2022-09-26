@@ -66,6 +66,7 @@ const Container = styled.div``
 
 const Item = styled.div`
   margin-bottom: 15px;
+  
   a {
     text-decoration: none;
   }
