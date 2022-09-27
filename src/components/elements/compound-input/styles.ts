@@ -15,15 +15,15 @@ export const Item = styled.div<{ inverted: boolean }>`
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-  }
 
-  ${({ inverted }) =>
-    inverted &&
-    css`
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr 0.1fr;
-      grid-template-areas: 'input select icon';
-    `}
+    ${({ inverted }) =>
+      inverted &&
+      css`
+        display: grid;
+        grid-template-areas: 'input select icon';
+        grid-template-columns: 1.2fr 0.8fr 0.1fr;
+      `}
+  }
 `
 
 export const CollapseButton = styled.button`
