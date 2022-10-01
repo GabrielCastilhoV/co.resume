@@ -66,7 +66,7 @@ const Container = styled.div``
 
 const Item = styled.div`
   margin-bottom: 15px;
-
+  
   a {
     text-decoration: none;
   }
@@ -81,4 +81,6 @@ const ServiceName = styled.p`
 const Text = styled.p`
   color: #3a3a3a;
   text-decoration: none;
+  inline-size: 150px;
+  overflow-wrap: break-word;
 `

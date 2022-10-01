@@ -92,7 +92,6 @@ const Item = styled.div`
   svg {
     width: 24px;
     height: 24px;
-
     color: #376ffe;
   }
 
@@ -105,4 +104,6 @@ const Text = styled.p`
   color: #3a3a3a;
   text-decoration: none;
   margin-left: 10px;
+  inline-size: 150px;
+  overflow-wrap: break-word;
 `
